@@ -1,7 +1,17 @@
 import React from "react";
 
+import MainPage from "./main/MainPage";
+import GroupListPage from "./groupList/GroupListPage";
+import GroupDetailPage from "./groupDetail/GroupDetailPage";
+
 function App() {
-  return <div className="App">Hello Rreact</div>;
+  return (
+    <>
+      <MainPage />
+      <GroupListPage />
+      <GroupDetailPage />
+    </>
+  );
 }
 
 export default App;
