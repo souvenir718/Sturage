@@ -11,13 +11,11 @@ import Footer from "./footer/Footer";
 function App() {
   return (
     <>
-      <Container>
-        <Header />
-        <MainPage />
-        <Route path="/" component={MainPage} exact={true} />
-        <Route path="/list" component={GroupListPage} exact={true} />
-        <Route path="/detail" component={GroupDetailPage} exact={true} />
-      </Container>
+      <Header />
+      <MainPage />
+      <Route path="/" component={MainPage} exact={true} />
+      <Route path="/list" component={GroupListPage} exact={true} />
+      <Route path="/detail" component={GroupDetailPage} exact={true} />
       <Footer />
     </>
   );
