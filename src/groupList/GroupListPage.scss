@@ -1,0 +1,58 @@
+.listpage-contianer {
+  padding-top: 10rem !important;
+
+  .listpage-search {
+    position: relative;
+
+    input {
+      border-radius: 1rem !important;
+    }
+
+    button {
+      padding: 1.2rem !important;
+      position: absolute;
+      top: 9px;
+      right: 25px;
+      border-radius: 0.7rem !important;
+      background-color: #8e44ad;
+      color: white;
+      font-size: 1.1rem;
+    }
+  }
+
+  .listpage-subject {
+    padding-top: 3% !important;
+
+    h2 {
+      padding-left: 1%;
+      margin-bottom: 1%;
+    }
+
+    .subject-card {
+      padding-top: 3rem !important;
+      padding-left: 1rem !important;
+      height: 10rem;
+      width: 10rem !important;
+      margin-right: 3% !important;
+      cursor: pointer;
+
+      span {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .listpage-list {
+    padding-top: 5% !important;
+
+    h2 {
+      margin-bottom: 2%;
+    }
+
+    .list-card {
+      height: 25rem;
+      margin-bottom: 2% !important;
+    }
+  }
+}
