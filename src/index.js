@@ -7,7 +7,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Provider } from "mobx-react";
 import Login from "./user/view/login";
 import SignUp from "./user/view/signUp";
-
+import "./index.css";
 // 공통 스토어
 import CommonStore from "./Common/store";
 
@@ -17,8 +17,9 @@ ReactDOM.render(
     <Provider Store={new CommonStore()}>
       <Route path="/login" component={Login} exact={true} />
       <Route path="/signUp" component={SignUp} exact={true} />
+
       <Route
-        path={["/", "/grouplist", "/groupInfo", "/list", "/detail"]}
+        path={["/", "/list", "/info", "/detail", "/addGroup"]}
         component={App}
         exact={true}
       />

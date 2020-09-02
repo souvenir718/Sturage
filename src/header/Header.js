@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import {
   Segment,
   Menu,
-  Sidebar,
-  Icon,
-  Grid,
-  Checkbox,
+  Dropdown,
   Image,
+  Icon,
+  Button,
 } from "semantic-ui-react";
+import qs from "qs";
+import { withRouter, Link } from "react-router-dom";
+import { inject, Observer } from "mobx-react";
 
+@Observer
+@withRouter
+@inject("Store")
 class Header extends Component {
   state = { activeItem: "home", visible: false };
 
@@ -16,73 +21,67 @@ class Header extends Component {
   setVisible = () => {
     this.setState({ visible: !this.state.visible });
   };
+
   render() {
-    const { activeItem, userId } = this.state;
+    const urlParams = qs.parse(this.props.location.search, {
+      ignoreQueryPrefix: true,
+    });
+    const trigger = (
+      <span>
+        <Icon name="user" /> Hello, {urlParams.user}
+      </span>
+    );
+
+    const options = [
+      {
+        key: "user",
+        text: (
+          <span>
+            Signed in as <strong>{urlParams.user}</strong>
+          </span>
+        ),
+        disabled: true,
+      },
+      { key: "profile", text: "My Profile" },
+      { key: "myTodoList", text: "My TodoList" },
+      { key: "myGroup", text: "My Group" },
+      { key: "settings", text: "Settings" },
+      { key: "log-out", text: "Log Out" },
+    ];
+
     return (
       <div>
         <Segment style={{ backgroundColor: "#8e44ad" }} inverted>
           <Menu size="large" inverted secondary>
-            <Checkbox
-              hidden
-              checked={this.state.visible}
-              label={{ children: <code>visible</code> }}
-              onChange={(e, data) => this.setVisible(data.checked)}
-            />
-            <Menu.Menu position="right">
-              <Menu.Item
-                icon="user circle"
-                name="MyPage"
-                active={activeItem === "MyPage"}
-                onClick={this.handleItemClick}
+            <Menu.Menu position="left" style={{ display: 0 - 20 }}>
+              <Image
+                src="./logo/logo.png"
+                size="tiny"
+                style={{ marin: "5px", marginLeft: "80px" }}
+                href="/"
               />
-              <Menu.Item
-                icon="key"
-                name="Login"
-                active={activeItem === "login"}
-                onClick={this.handleItemClick}
-              />
+            </Menu.Menu>
+            <Menu.Menu position="right" style={{ display: 0 - 20 }}>
+              <Menu.Item>
+                {urlParams.tag ? (
+                  <Dropdown
+                    trigger={trigger}
+                    options={options}
+                    style={{ marginRight: "80px" }}
+                  />
+                ) : (
+                  <Button
+                    inverted
+                    href="/login"
+                    style={{ marginRight: "80px" }}
+                  >
+                    <Icon name="key" /> Login
+                  </Button>
+                )}
+              </Menu.Item>
             </Menu.Menu>
           </Menu>
         </Segment>
-
-        {/* <Grid columns={1}>
-          <Grid.Column>
-            <Sidebar.Pushable as={Segment}>
-              <Sidebar
-                as={Menu}
-                animation="overlay"
-                icon="labeled"
-                inverted
-                onHide={() => {
-                  this.setState({ visible: false });
-                }}
-                vertical
-                visible={false}
-                width="thin"
-              >
-                <Menu.Item as="a">
-                  <Icon name="users" />
-                  Group Info
-                </Menu.Item>
-                <Menu.Item as="a">
-                  <Icon name="gamepad" />
-                  Group List
-                </Menu.Item>
-                <Menu.Item as="a">
-                  <Icon name="camera" />
-                  Channels
-                </Menu.Item>
-              </Sidebar>
-
-              <Sidebar.Pusher>
-                <Segment basic>
-                  <Header as="h3">Application Content</Header>
-                  <Image src="/images/wireframe/paragraph.png" />
-                </Segment>
-              </Sidebar.Pusher>
-            </Sidebar.Pushable>
-          </Grid.Column>
-        </Grid> */}
       </div>
     );
   }
