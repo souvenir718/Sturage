@@ -8,6 +8,7 @@ import { Provider } from "mobx-react";
 import Login from "./user/view/login";
 import SignUp from "./user/view/signUp";
 
+
 // 공통 스토어
 import CommonStore from "./Common/store";
 
@@ -22,6 +23,8 @@ ReactDOM.render(
         component={App}
         exact={true}
       />
+      
+      <Route path={["/", "/list", "/detail","/addGroup"]} component={App} exact={true} />
     </Provider>
   </BrowserRouter>,
 
