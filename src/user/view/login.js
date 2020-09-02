@@ -18,7 +18,7 @@ class login extends Component {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 520 }}>
-          <Header as="h2" color="purple" textAlign="center">
+          <Header as="h2" style={{ color: "#8e44ad" }} textAlign="center">
             <Image src="./logo/logo_purple.png" /> Log-in to your account
           </Header>
           <Form size="huge">
