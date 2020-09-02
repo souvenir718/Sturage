@@ -1,36 +1,98 @@
 import React, { Component } from "react";
+import { Grid, Header, Item, Button, Image } from "semantic-ui-react";
 import "./GroupDetailPage.scss";
-import { Grid, Image, Header, Button } from "semantic-ui-react";
 class GroupDetailPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFlag: false,
+    };
+  }
+  onMouseMove = (e) => {
+    if (e.clientX < 100) {
+      this.setState({
+        isFlag: true,
+      });
+    } else if (e.clientX > 300) {
+      this.setState({
+        isFlag: false,
+      });
+    }
+  };
   render() {
     return (
-      <Grid className="detailpage-contianer">
-        <Grid.Row centered>
-          <Grid.Column width={10} className="detailpage-content">
-            <Image
-              size="large"
-              src="Image/GroupListPageImage/book-863418_1920.jpg"
-            />
-            <div className="content-desc">
-              <Header as="h2">수사모(수학을 사랑하는 모임)</Header>
-              <p>
-                수학퀴즈 및 다양하고 창의적인 문제를 통하여 지적 유희와 두뇌발달
-                및 치매 예방을 목적으로 하는 모임수학퀴즈 및 다양하고 창의적인
-                문제를 통하여 지적 유희와 두뇌발달 및 치매 예방을 목적으로 하는
-                모임수학퀴즈 및 다양하고 창의적인 문제를 통하여 지적 유희와
-                두뇌발달 및 치매 예방을 목적으로 하는 모임
-              </p>
-              <span>김수빈</span>
+      <>
+        {this.state.isFlag && (
+          <div className="detailpage-sidebar">
+            <div className="sidebar-content">
+              <Image src="Image/GroupListPageImage/book-863418_1920.jpg" />
+
+              <div className="sidebar-desc">
+                <Header>Jeong Seung Hoon</Header>
+                <p>I want...</p>
+              </div>
+
+              <div className="sidebar-btns">
+                <Button>1. Times</Button>
+                <Button>2. Times</Button>
+                <Button>3. Times</Button>
+                <Button>4. Times</Button>
+              </div>
             </div>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row centered>
-          <Grid.Column width={6} className="detailpage-button">
-            <Button className="btn-cancel">돌아가기</Button>{" "}
-            <Button className="btn-attend">참여하기</Button>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+          </div>
+        )}
+        <Grid onMouseMove={this.onMouseMove} className="detailpage-container">
+          <Grid.Row centered>
+            <Grid.Column width={8} className="detailpage-header">
+              <Header textAlign="center" as="h1">
+                <span>Monpang's</span> goal this week
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row centered>
+            <Grid.Column width={8} className="detailpage-contents">
+              <Item.Group>
+                <Item className="detailpage-content">
+                  <Item.Content>
+                    <Item.Header>1.Times</Item.Header>
+                    <Item.Description>
+                      I Plan to do Noting Today 1
+                    </Item.Description>
+                  </Item.Content>
+                  <Button>Show</Button>
+                </Item>
+                <Item className="detailpage-content">
+                  <Item.Content>
+                    <Item.Header>1.Times</Item.Header>
+                    <Item.Description>
+                      I Plan to do Noting Today 1
+                    </Item.Description>
+                  </Item.Content>
+                  <Button>Show</Button>
+                </Item>
+                <Item className="detailpage-content">
+                  <Item.Content>
+                    <Item.Header>1.Times</Item.Header>
+                    <Item.Description>
+                      I Plan to do Noting Today 1
+                    </Item.Description>
+                  </Item.Content>
+                  <Button>Show</Button>
+                </Item>
+                <Item className="detailpage-content">
+                  <Item.Content>
+                    <Item.Header>1.Times</Item.Header>
+                    <Item.Description>
+                      I Plan to do Noting Today 1
+                    </Item.Description>
+                  </Item.Content>
+                  <Button>Show</Button>
+                </Item>
+              </Item.Group>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </>
     );
   }
 }
