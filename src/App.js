@@ -7,15 +7,17 @@ import Header from "./header/Header";
 import { Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 import Footer from "./footer/Footer";
+import AddGroup from "./user/view/addGroup";
 
 function App() {
   return (
     <>
       <Header />
-      <MainPage />
+
       <Route path="/" component={MainPage} exact={true} />
       <Route path="/list" component={GroupListPage} exact={true} />
       <Route path="/detail" component={GroupDetailPage} exact={true} />
+      <Route path="/addGroup" component={AddGroup} exact={true} />
       <Footer />
     </>
   );
