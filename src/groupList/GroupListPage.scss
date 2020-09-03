@@ -27,23 +27,9 @@
 
     h2 {
       font-family: "Cute Font', cursive";
-      padding-left: 1%;
-      margin-bottom: 1%;
+      margin-bottom: 2%;
     }
 
-    .subject-card {
-      padding-top: 3rem !important;
-      padding-left: 1rem !important;
-      height: 10rem;
-      width: 10rem !important;
-      margin-right: 3% !important;
-      cursor: pointer;
-
-      span {
-        margin-top: 2rem;
-        font-size: 1.5rem;
-      }
-    }
   }
 
   .listpage-list {
@@ -52,19 +38,6 @@
     h2 {
       font-family: "Cute Font', cursive";
       margin-bottom: 2%;
-    }
-
-    .list-card {
-      font-family: "Cute Font', cursive";
-      height: max-content !important;
-
-      .header {
-        font-family: "Cute Font', cursive" !important;
-      }
-
-      cursor: pointer;
-      height: 25rem;
-      margin-bottom: 2% !important;
     }
   }
 }
