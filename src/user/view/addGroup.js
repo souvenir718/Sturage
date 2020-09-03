@@ -25,54 +25,43 @@ class addGroup extends Component {
     ];
     return (
       <Container>
-        <Grid style={{ marginTop: "100px" }}>
-          <Grid.Column width={4}>
-            <Image src="/images/wireframe/image.png" />
-            <Button>이미지 업로드 버튼</Button>
+        <Grid style={{ marginTop: "100px", marginLeft: "40px" }}>
+          <Grid.Column width={4} >
+            <Image
+              style={{ marginTop: "20px" }}
+              src="./Image/none_image.png"
+              size="large"
+            />
+            <br />
+            <Button style={{ marginLeft: "45px", marginTop: "10px" }}>
+              <Icon name="upload" />
+              이미지 업로드 하기
+            </Button>
           </Grid.Column>
-          <Grid.Column width={9}>
+          <Grid.Column width={9} style={{ marginLeft: "80px" }}>
             <Form>
-              <Form.Group widths="equal">
-                <Form.Input fluid label="그룹이름" placeholder="group name" />
+              <Form.Input fluid label="그룹이름" placeholder="group name" />
+              <Form.Group>
+                <Form.Select
+                  width={5}
+                  fluid
+                  label="그룹 카테고리"
+                  options={options}
+                  placeholder="group category"
+                />
                 <Form.Input
+                  width={11}
                   fluid
                   label="그룹목표"
                   placeholder="group subject"
                 />
-                <Form.Select
-                  fluid
-                  label="Gender"
-                  options={options}
-                  placeholder="Gender"
-                />
               </Form.Group>
-              <Form.Group inline>
-                <label>Size</label>
-                <Form.Radio
-                  label="Small"
-                  value="sm"
-                  checked={value === "sm"}
-                  onChange={this.handleChange}
-                />
-                <Form.Radio
-                  label="Medium"
-                  value="md"
-                  checked={value === "md"}
-                  onChange={this.handleChange}
-                />
-                <Form.Radio
-                  label="Large"
-                  value="lg"
-                  checked={value === "lg"}
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
+
               <Form.TextArea
-                label="About"
-                placeholder="Tell us more about you..."
+                label="그룹 소개글을 작성해주세요."
+                placeholder="Tell us more about your group..."
               />
-              <Form.Checkbox label="I agree to the Terms and Conditions" />
-              <Form.Button>Submit</Form.Button>
+              <Form.Button style={{float:"right"}}><Icon name="archive"/>등록하기</Form.Button>
             </Form>
           </Grid.Column>
         </Grid>

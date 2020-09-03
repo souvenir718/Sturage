@@ -16,10 +16,9 @@ ReactDOM.render(
   <BrowserRouter>
     <Provider Store={new CommonStore()}>
       <Route path="/login" component={Login} exact={true} />
-      <Route path="/signUp" component={SignUp} exact={true} />
 
       <Route
-        path={["/", "/list", "/info", "/detail", "/addGroup"]}
+        path={["/", "/list", "/info", "/detail", "/addGroup", "/signUp"]}
         component={App}
         exact={true}
       />
