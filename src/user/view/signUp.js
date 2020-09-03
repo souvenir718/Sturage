@@ -16,10 +16,10 @@ class signUp extends Component {
     ];
     return (
       <Container>
-        <h3 style={{ margin: "80px 200px 0 200px" }}>
+        <h2 style={{ margin: "80px 200px 0 200px" }}>
           <Icon name="pen square" />
           회원가입하기
-        </h3>
+        </h2>
         <Form style={{ margin: "40px 200px" }}>
           <Form.Field
             id="form-input-control-name"
@@ -74,6 +74,7 @@ class signUp extends Component {
             control={Button}
             icon="pencil"
             content="회원가입하기"
+            color="purple"
           />
         </Form>
       </Container>
