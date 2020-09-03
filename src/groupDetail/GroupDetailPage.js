@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Grid, Header, Item, Button, Image, Modal } from "semantic-ui-react";
 import "./GroupDetailPage.scss";
 import Todo from "./Todo";
+import Sidebar from "./Sidebar";
 class GroupDetailPage extends Component {
   constructor(props) {
     super(props);
@@ -37,25 +38,7 @@ class GroupDetailPage extends Component {
   render() {
     return (
       <>
-        {this.state.isFlag && (
-          <div className="detailpage-sidebar">
-            <div className="sidebar-content">
-              <Image src="Image/GroupListPageImage/book-863418_1920.jpg" />
-
-              <div className="sidebar-desc">
-                <Header>Jeong Seung Hoon</Header>
-                <p>I want...</p>
-              </div>
-
-              <div className="sidebar-btns">
-                <Button>1. Times</Button>
-                <Button>2. Times</Button>
-                <Button>3. Times</Button>
-                <Button>4. Times</Button>
-              </div>
-            </div>
-          </div>
-        )}
+        {this.state.isFlag && <Sidebar />}
         <Modal
           onClose={this.onClose}
           onOpen={this.onOpen}
