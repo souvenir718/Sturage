@@ -1,3 +1,56 @@
+.detailpage-modal {
+    .header {
+        color: rgb(142, 68, 173) !important;
+        background-color: rgb(224, 224, 224) !important;
+        border-bottom: none !important;
+    }
+
+    .modal-content {
+        background-color: rgb(224, 224, 224) !important;
+        padding-bottom: 1rem !important;
+
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            color: black !important;
+            padding-left: 2rem;
+        }
+
+        .modal-desc {
+            min-height: 15rem;
+            margin: 0 auto;
+            padding: 1rem;
+            font-size: 1.3rem;
+            width: 95% !important;
+            background-color: white;
+        }
+    }
+
+    .modal-btns {
+        border-top: none !important;
+        background-color: rgb(224, 224, 224) !important;
+        text-align: center !important;
+        padding-bottom: 2rem !important;
+
+        button {
+            color: white;
+            font-size: 1.5rem;
+            width: 19rem;
+            height: 3rem;
+            line-height: 1rem;
+        }
+
+        .cancel-btn {
+            background-color: black;
+        }
+
+        .submit-btn {
+
+            background-color: rgb(142, 68, 173) !important;
+        }
+    }
+}
+
 .detailpage-sidebar {
     position: absolute;
     top: 0;
@@ -65,28 +118,5 @@
         }
     }
 
-    .detailpage-contents {
-        .detailpage-content {
-            padding: 1rem !important;
-            margin-bottom: 3rem !important;
-            background-color: rgb(224, 224, 224) !important;
-
-            .header {
-                color: rgb(142, 68, 173) !important;
-                font-size: 1.3rem !important;
-                font-family: "Cute Font', cursive" !important;
-            }
-
-            .description {
-                font-size: 1.5rem !important;
-            }
-
-            button {
-                font-size: 1.5rem;
-                font-family: "Cute Font', cursive";
-                color: white;
-                background-color: rgb(94, 94, 94);
-            }
-        }
-    }
+    .detailpage-todos {}
 }
