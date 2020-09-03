@@ -26,7 +26,7 @@ class addGroup extends Component {
     return (
       <Container>
         <Grid style={{ marginTop: "100px", marginLeft: "40px" }}>
-          <Grid.Column width={4} >
+          <Grid.Column width={4}>
             <Image
               style={{ marginTop: "20px" }}
               src="./Image/none_image.png"
@@ -61,7 +61,10 @@ class addGroup extends Component {
                 label="그룹 소개글을 작성해주세요."
                 placeholder="Tell us more about your group..."
               />
-              <Form.Button style={{float:"right"}}><Icon name="archive"/>등록하기</Form.Button>
+              <Form.Button style={{ float: "right" }} color="purple">
+                <Icon name="archive" />
+                등록하기
+              </Form.Button>
             </Form>
           </Grid.Column>
         </Grid>
