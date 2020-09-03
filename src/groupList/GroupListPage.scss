@@ -1,5 +1,6 @@
 .listpage-contianer {
   padding-top: 10rem !important;
+  font-family: "Cute Font', cursive";
 
   .listpage-search {
     position: relative;
@@ -9,6 +10,7 @@
     }
 
     button {
+      font-family: "Cute Font', cursive";
       padding: 1.2rem !important;
       position: absolute;
       top: 9px;
@@ -24,36 +26,18 @@
     padding-top: 3% !important;
 
     h2 {
-      padding-left: 1%;
-      margin-bottom: 1%;
+      font-family: "Cute Font', cursive";
+      margin-bottom: 2%;
     }
 
-    .subject-card {
-      padding-top: 3rem !important;
-      padding-left: 1rem !important;
-      height: 10rem;
-      width: 10rem !important;
-      margin-right: 3% !important;
-      cursor: pointer;
-
-      span {
-        margin-top: 2rem;
-        font-size: 1.5rem;
-      }
-    }
   }
 
   .listpage-list {
     padding-top: 5% !important;
 
     h2 {
+      font-family: "Cute Font', cursive";
       margin-bottom: 2%;
-    }
-
-    .list-card {
-      cursor: pointer;
-      height: 25rem;
-      margin-bottom: 2% !important;
     }
   }
 }

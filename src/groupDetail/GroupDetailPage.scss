@@ -1,48 +1,59 @@
-.detailpage-sidebar {
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    background: rgb(58, 58, 58);
-    width: 16rem;
+.detailpage-modal {
+    .header {
+        color: rgb(142, 68, 173) !important;
+        background-color: rgb(224, 224, 224) !important;
+        border-bottom: none !important;
+    }
 
-    .sidebar-content {
-        padding-top: 10rem;
-        width: 88%;
+    .modal-content {
+        background-color: rgb(224, 224, 224) !important;
+        padding-bottom: 1rem !important;
 
-        img {
-            padding-left: 1rem;
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            color: black !important;
+            padding-left: 2rem;
+        }
+
+        .modal-desc {
+            min-height: 15rem;
             margin: 0 auto;
-        }
-
-        .sidebar-desc {
-            min-height: 10rem;
-            color: white;
-            padding-left: 1rem;
-            padding-top: 1.5rem;
-            font-size: 1rem;
-
-            .header {
-                color: white;
-            }
-        }
-
-        .sidebar-btns {
-            padding-left: 1rem;
-            padding-top: 3rem;
-
-            button {
-                font-size: 1rem !important;
-                width: 100%;
-                height: 2.7rem;
-                margin-bottom: 2.5rem;
-            }
+            padding: 1rem;
+            font-size: 1.3rem;
+            width: 95% !important;
+            background-color: white;
         }
     }
 
+    .modal-btns {
+        border-top: none !important;
+        background-color: rgb(224, 224, 224) !important;
+        text-align: center !important;
+        padding-bottom: 2rem !important;
+
+        button {
+            color: white;
+            font-size: 1.5rem;
+            width: 19rem;
+            height: 3rem;
+            line-height: 1rem;
+        }
+
+        .cancel-btn {
+            background-color: black;
+        }
+
+        .submit-btn {
+
+            background-color: rgb(142, 68, 173) !important;
+        }
+    }
 }
 
 .detailpage-container {
     padding-top: 8rem !important;
+    font-family: "Cute Font', cursive";
 
     .detailpage-header {
         padding-bottom: 2.5rem;
@@ -50,6 +61,8 @@
 
         h1 {
             font-size: 2.5rem !important;
+            font-family: "Cute Font', cursive";
+
 
             span {
                 color: rgb(142, 68, 173);
@@ -59,26 +72,5 @@
         }
     }
 
-    .detailpage-contents {
-        .detailpage-content {
-            padding: 1rem !important;
-            margin-bottom: 3rem !important;
-            background-color: rgb(224, 224, 224) !important;
-
-            .header {
-                color: rgb(142, 68, 173) !important;
-                font-size: 1.3rem !important;
-            }
-
-            .description {
-                font-size: 1.5rem !important;
-            }
-
-            button {
-                font-size: 1.5rem;
-                color: white;
-                background-color: rgb(94, 94, 94);
-            }
-        }
-    }
+    .detailpage-todos {}
 }

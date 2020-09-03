@@ -10,6 +10,10 @@
     .content-desc {
       padding: 3%;
 
+      .header {
+        font-family: "Cute Font', cursive" !important;
+      }
+
       p {
         font-size: 1.3rem;
       }
@@ -24,6 +28,7 @@
 
   .infopage-button {
     button {
+      font-family: "Cute Font', cursive";
       color: white;
       font-size: 1.5rem;
       width: 23rem;
