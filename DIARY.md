@@ -4,18 +4,17 @@
 
 - 오늘 한일
 
-
-  👀 :eyes: 수빈 : ListPage store 생성 및 컨테이너 연결
-  🐬 :dolphin: 소민 : MyPage 구조 생성
-  💪 :muscle: 승훈 : Group기능 관련 testcase 작성
+  - 👀 수빈 : ListPage store 생성 및 컨테이너 연결
+  - 🐬 소민 : MyPage 구조 생성
+  - 💪 승훈 : Group기능 관련 testcase 작성
 
 - 다음회차까지 할일
 
-  👀 :eyes:  수빈 : 그룹장 페이지 레이아웃 작성
-  🐬 :dolphin: 소민 : myPage 최소 2page :anger:
-  💪 :muscle: 승훈 : todo crud구현
+  - 👀 수빈 : 그룹장 페이지 레이아웃 작성
+  - 🐬 소민 : myPage 최소 2page :anger:
+  - 💪 승훈 : todo crud구현
 
 - 장애사항 및 tmi
-  👀 :eyes:  수빈 : 코드 리팩토링 깔끔하게 하자.
-  🐬 :dolphin: 소민 : 힘든하루..파일작성시 한번 제목정할때 잘정하자 소문자 X
-  💪 :muscle: 승훈 : 테스트는 확실하게 하자
+  - 👀 수빈 : 코드 리팩토링 깔끔하게 하자.
+  - 🐬 소민 : 힘든하루..파일작성시 한번 제목정할때 잘정하자 소문자 X
+  - 💪 승훈 : 테스트는 확실하게 하자
