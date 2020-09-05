@@ -9,7 +9,7 @@ import {
   Message,
 } from "semantic-ui-react";
 
-class login extends Component {
+class Login extends Component {
   render() {
     return (
       <Grid
@@ -57,4 +57,4 @@ class login extends Component {
   }
 }
 
-export default login;
+export default Login;

@@ -5,8 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
 import { Provider } from "mobx-react";
-import Login from "./user/view/login";
-import SignUp from "./user/view/signUp";
+import Login from "./user/view/Login";
 import "./index.css";
 // 공통 스토어
 import CommonStore from "./Common/store";
@@ -18,7 +17,7 @@ ReactDOM.render(
       <Route path="/login" component={Login} exact={true} />
 
       <Route
-        path={["/", "/list", "/info", "/detail", "/addGroup", "/signUp"]}
+        path={["/", "/list", "/info", "/detail", "/addGroup", "/signUp", "/my"]}
         component={App}
         exact={true}
       />
