@@ -2,8 +2,8 @@
 
 ## 📁 Folder
 
-- [📁Wiki](https://github.com/수빈이/sturage/)
-- [📁Diary](https://github.com/shoon2430/TIL/tree/master/DB)
+- [📁Wiki](https://github.com/souvenir718/Sturage/blob/master/WIKI.md)
+- [📁Diary](https://github.com/souvenir718/Sturage/blob/master/DIARY.md)
   e
 
 ## 환경 설정
