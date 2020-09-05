@@ -1,10 +1,16 @@
 # Sturage React Project
 
+## 📁 Folder
+
+- [📁Wiki](https://github.com/수빈이/sturage/)
+- [📁Diary](https://github.com/shoon2430/TIL/tree/master/DB)
+  e
+
 ## 환경 설정
 
 build 실행
 
-> yarn build
+> yarn builde
 
 이미지 생성
 
@@ -23,3 +29,5 @@ build 실행
 #### react-slideshow-image
 
 > https://www.npmjs.com/package/react-slideshow-image
+
+---
