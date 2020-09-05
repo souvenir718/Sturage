@@ -37,16 +37,16 @@ class Header extends Component {
         key: "user",
         text: (
           <span>
-            Signed in as <strong>{urlParams.user}</strong>
+            <strong>{urlParams.user}</strong>'s page
           </span>
         ),
         disabled: true,
       },
-      { key: "profile", text: "My Profile" },
-      { key: "myTodoList", text: "My TodoList" },
-      { key: "myGroup", text: "My Group" },
-      { key: "settings", text: "Settings" },
-      { key: "log-out", text: "Log Out" },
+      { key: "profile", text: "내 정보 보기" , href:"/my/profile" },
+      { key: "myTodoList", text: "내 할일 보기" , href:"/my/TodoList" },
+      { key: "myGroup", text: "내 그룹 보기" , href:"/my/Group" },
+      { key: "settings", text: "설정" , href:"/my/settings"},
+      { key: "log-out", text: "로그아웃", href:"/my/logout" },
     ];
 
     return (
@@ -58,7 +58,8 @@ class Header extends Component {
                 src="./logo/logo.png"
                 size="tiny"
                 style={{ marin: "5px", marginLeft: "80px" }}
-                href="/"
+                as={Link}
+                to="/"
               />
             </Menu.Menu>
             <Menu.Menu position="right" style={{ display: 0 - 20 }}>
@@ -72,7 +73,8 @@ class Header extends Component {
                 ) : (
                   <Button
                     inverted
-                    href="/login"
+                    as={Link}
+                    to="/login"
                     style={{ marginRight: "80px" }}
                   >
                     <Icon name="key" /> Login

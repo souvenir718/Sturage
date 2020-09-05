@@ -7,7 +7,7 @@ import {
   Input,
   TextArea,
 } from "semantic-ui-react";
-class signUp extends Component {
+class SignUp extends Component {
   render() {
     const options = [
       { key: "m", text: "Male", value: "male" },
@@ -82,4 +82,4 @@ class signUp extends Component {
   }
 }
 
-export default signUp;
+export default SignUp;

@@ -1,23 +1,12 @@
 import React, { Component } from "react";
-import {
-  Icon,
-  Container,
-  Image,
-  Grid,
-  Button,
-  Segment,
-  Form,
-  Divider,
-} from "semantic-ui-react";
+import { Icon, Container, Image, Grid, Button, Form } from "semantic-ui-react";
 
-class addGroup extends Component {
+class AddGroup extends Component {
   state = {};
 
   handleChange = (e, { value }) => this.setState({ value });
 
   render() {
-    const { value } = this.state;
-
     const options = [
       { key: "m", text: "웹개발", value: "male" },
       { key: "f", text: "인공지능", value: "female" },
@@ -73,4 +62,4 @@ class addGroup extends Component {
   }
 }
 
-export default addGroup;
+export default AddGroup;

@@ -18,6 +18,7 @@ const userLogin = async () => {
   return await axios
     .post(api, data)
     .then((res) => {
+      //성공
       // 로그인시 토큰 취득
       const jwt_token = res.data.token;
       // localStorage에 accessToken으로 세팅
@@ -58,8 +59,19 @@ const enhanceAccessToeken = () => {
   axios.defaults.headers.common["Authorization"] = `JWT ${accessToken}`;
 };
 
+// const getUser = () => {
+//   const api = "/api/user/";
+
+//   if (localStorage.accessToken) {
+//     axios.get(api);
+//   } else {
+//     //login 으로
+//   }
+// };
+
 const getUsers = () => {
   const api = "/api/users/";
+
   axios
     .get(api)
     .then((res) => {
@@ -117,6 +129,7 @@ userLogin().then((res) => {
   getUsers();
   getGroups();
 });
+
 // enhanceAccessToeken();
 
 // export { userLogin, enhanceAccessToeken, getUsers, getGroups };

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Grid, Button, Segment, Form, Divider } from "semantic-ui-react";
+import { Grid, Button, Segment, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 class Main extends Component {
@@ -8,7 +8,9 @@ class Main extends Component {
       color: "white",
       backgroundColor: "#8e44ad",
       height: "250px",
-      width: "400px",
+      width: "250px",
+      paddingTop: "70px",
+      lineHeight: "50px",
       fontFamily: "Cute Font', cursive",
     };
     return (
@@ -19,14 +21,7 @@ class Main extends Component {
               content="스터디그룹 둘러보기"
               icon="search plus"
               size="huge"
-              style={{
-                color: "white",
-                backgroundColor: "#8e44ad",
-                height: "250px",
-                width: "250px",
-                paddingTop: "70px",
-                lineHeight: "50px",
-              }}
+              style={mainBox}
               as={Link}
               to="/list"
             ></Button>
@@ -37,15 +32,9 @@ class Main extends Component {
               content="스터디그룹 만들기"
               icon="plus circle"
               size="huge"
-              style={{
-                color: "white",
-                backgroundColor: "#8e44ad",
-                height: "250px",
-                width: "400px",
-                paddingTop: "70px",
-                lineHeight: "50px",
-              }}
-              href="/addGroup"
+              style={mainBox}
+              as={Link}
+              to="/AddGroup"
             />
           </Grid.Column>
         </Grid>
