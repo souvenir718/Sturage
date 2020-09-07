@@ -17,7 +17,11 @@ import { inject, Observer } from "mobx-react";
 @withRouter
 @inject("Store")
 class Header extends Component {
-  state = { activeItem: "home", visible: false };
+  state = {
+    activeItem: "home",
+    visible: false,
+    mail: "",
+  };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   setVisible = () => {
@@ -25,9 +29,7 @@ class Header extends Component {
   };
 
   mail = () => {
-    console.log("mail~~~");
-
-    return <MailContainer />;
+    this.setState({ mail: this.state.mail ? "" : <MailContainer /> });
   };
 
   render() {
@@ -99,6 +101,7 @@ class Header extends Component {
             </Menu.Menu>
           )}
         </Menu>
+        <div>{this.state.mail}</div>
       </div>
     );
   }
