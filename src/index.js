@@ -25,6 +25,7 @@ ReactDOM.render(
           "/addGroup",
           "/signUp",
           "/my/:menu",
+          "/leader",
         ]}
         component={App}
         exact={true}
