@@ -17,7 +17,16 @@ ReactDOM.render(
       <Route path="/login" component={Login} exact={true} />
 
       <Route
-        path={["/", "/list", "/info", "/detail", "/addGroup", "/signUp", "/my"]}
+        path={[
+          "/",
+          "/list",
+          "/info",
+          "/detail",
+          "/addGroup",
+          "/signUp",
+          "/my",
+          "/leader",
+        ]}
         component={App}
         exact={true}
       />
