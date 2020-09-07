@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import { Feed } from "semantic-ui-react";
 
+let mailStyle = {
+  position: "absolute",
+  zIndex: "10",
+  right: "0",
+  backgroundColor: "white",
+  width: "400px",
+  height: "300px",
+  overflow: "auto",
+};
+
 const events = [
   {
     date: "1 Hour Ago",
@@ -40,6 +50,6 @@ const events = [
   },
 ];
 
-const MailContainer = () => <Feed events={events} />;
+const MailContainer = () => <Feed events={events} style={mailStyle} />;
 
 export default MailContainer;
