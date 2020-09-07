@@ -6,7 +6,9 @@ import {
   Image,
   Icon,
   Button,
+  Label,
 } from "semantic-ui-react";
+import MailContainer from "../user/container/MailContainer";
 import qs from "qs";
 import { withRouter, Link } from "react-router-dom";
 import { inject, Observer } from "mobx-react";
@@ -20,6 +22,12 @@ class Header extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   setVisible = () => {
     this.setState({ visible: !this.state.visible });
+  };
+
+  mail = () => {
+    console.log("mail~~~");
+
+    return <MailContainer />;
   };
 
   render() {
@@ -42,48 +50,55 @@ class Header extends Component {
         ),
         disabled: true,
       },
-      { key: "profile", text: "내 정보 보기" , href:"/my/profile" },
-      { key: "myTodoList", text: "내 할일 보기" , href:"/my/TodoList" },
-      { key: "myGroup", text: "내 그룹 보기" , href:"/my/Group" },
-      { key: "settings", text: "설정" , href:"/my/settings"},
-      { key: "log-out", text: "로그아웃", href:"/my/logout" },
+      { key: "profile", text: "내 정보 보기", href: "/my/profile" },
+      { key: "myTodoList", text: "내 할일 보기", href: "/my/TodoList" },
+      { key: "myGroup", text: "내 그룹 보기", href: "/my/Group" },
+      { key: "settings", text: "설정", href: "/my/settings" },
+      { key: "log-out", text: "로그아웃", href: "/my/logout" },
     ];
 
     return (
-      <div>
-        <Segment style={{ backgroundColor: "#8e44ad" }} inverted>
-          <Menu size="large" inverted secondary>
-            <Menu.Menu position="left" style={{ display: 0 - 20 }}>
-              <Image
-                src="./logo/logo.png"
-                size="tiny"
-                style={{ marin: "5px", marginLeft: "80px" }}
-                as={Link}
-                to="/"
-              />
-            </Menu.Menu>
+      <div style={{ backgroundColor: "#8e44ad", padding: "10px" }} inverted>
+        <Menu size="large" inverted secondary>
+          <Menu.Menu position="left" style={{ display: 0 - 20 }}>
+            <Image
+              src="./logo/logo.png"
+              size="tiny"
+              style={{ marin: "5px", marginLeft: "80px" }}
+              as={Link}
+              to="/"
+            />
+          </Menu.Menu>
+          {urlParams.tag ? (
             <Menu.Menu position="right" style={{ display: 0 - 20 }}>
               <Menu.Item>
-                {urlParams.tag ? (
-                  <Dropdown
-                    trigger={trigger}
-                    options={options}
-                    style={{ marginRight: "80px" }}
-                  />
-                ) : (
-                  <Button
-                    inverted
-                    as={Link}
-                    to="/login"
-                    style={{ marginRight: "80px" }}
-                  >
-                    <Icon name="key" /> Login
-                  </Button>
-                )}
+                <Dropdown trigger={trigger} options={options} />
+              </Menu.Item>
+              <Menu.Item
+                style={{ margin: "0 100px 0 0" }}
+                onClick={() => this.mail()}
+              >
+                <Icon name="mail" /> Messages
+                <Label color="red" floating>
+                  5
+                </Label>
               </Menu.Item>
             </Menu.Menu>
-          </Menu>
-        </Segment>
+          ) : (
+            <Menu.Menu position="right" style={{ display: 0 - 20 }}>
+              <Menu.Item>
+                <Button
+                  inverted
+                  as={Link}
+                  to="/login"
+                  style={{ marginRight: "80px" }}
+                >
+                  <Icon name="key" /> Login
+                </Button>
+              </Menu.Item>
+            </Menu.Menu>
+          )}
+        </Menu>
       </div>
     );
   }

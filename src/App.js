@@ -8,10 +8,8 @@ import Footer from "./footer/Footer";
 import GroupDetailPage from "./groupDetail/GroupDetailPage";
 import AddGroup from "./user/view/AddGroup";
 import SignUpPage from "./user/view/SignUp";
-import myPage from "./user/view/My";
+import myContainer from "./user/container/MyContainer";
 import GroupListContainer from "./groupList/container/GroupListContainer";
-
-
 function App() {
   return (
     <>
@@ -22,7 +20,7 @@ function App() {
       <Route path="/info" component={GroupInfoPage} exact={true} />
       <Route path="/detail" component={GroupDetailPage} exact={true} />
       <Route path="/addGroup" component={AddGroup} exact={true} />
-      <Route path="/my" component={myPage} exact={true} />
+      <Route path="/my/:menu" component={myContainer} exact={true} />
       <Footer />
     </>
   );
