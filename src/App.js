@@ -10,8 +10,7 @@ import AddGroup from "./user/view/AddGroup";
 import SignUpPage from "./user/view/SignUp";
 import myPage from "./user/view/My";
 import GroupListContainer from "./groupList/container/GroupListContainer";
-
-
+import GroupLeader from "./GroupLeader/GroupLeader";
 function App() {
   return (
     <>
@@ -22,6 +21,7 @@ function App() {
       <Route path="/info" component={GroupInfoPage} exact={true} />
       <Route path="/detail" component={GroupDetailPage} exact={true} />
       <Route path="/addGroup" component={AddGroup} exact={true} />
+      <Route path="/leader" component={GroupLeader} exact={true} />
       <Route path="/my" component={myPage} exact={true} />
       <Footer />
     </>
