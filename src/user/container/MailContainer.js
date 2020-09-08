@@ -11,42 +11,46 @@ let mailStyle = {
   overflow: "auto",
 };
 
+const data = [
+  { date: "2020-09-08 22:00:01 ", status: "done", user: "somin" ,group:"멀캠스터디", todoList:"React"},
+  { date: "2020-09-08 08:42:20", status: "start", user: "abc", group: "역삼스터디", todoList: "spring"},
+  { date: "2020-09-07 20:08:10", status: "done", user: "hoon", group: "역삼스터디", todoList: "spring"},
+  { date: "2020-09-07 13:02:22", status: "start", user: "bin", group: "강남스터디", todoList: "css"},
+  { date: "2020-08-26 20:47:11", status: "done", user: "totoro", group: "멀캠스터디", todoList: "React"},
+  { date: "2020-08-06 08:20:11", status: "-ing", user: "rere", group: "멀캠스터디", todoList: "React"},
+];
+
+
+// const date = ()=>{
+//   data.map((data)=>{
+//     const today=new Date();
+//     let time = new Date(data.date);
+//     let cnt = today - time;
+    
+    
+    
+//   });
+// }
 const events = [
   {
-    date: "1 Hour Ago",
-    image: "/images/avatar/small/elliot.jpg",
-    meta: "4 Likes",
-    summary: "Elliot Fu added you as a friend",
+    date: "1 분 전",
+    meta: "done",
+    summary: "abc님이 '리액트B파트'를 [완료]으로 변경하였습니다.",
   },
   {
-    date: "4 days ago",
-    image: "/images/avatar/small/helen.jpg",
-    meta: "1 Like",
-    summary: "Helen Troy added 2 new illustrations",
-    extraImages: [
-      "/images/wireframe/image.png",
-      "/images/wireframe/image-text.png",
-    ],
+    date: "4 시간 전",
+    meta: "start",
+    summary: "hoho님이 '스프링A파트'를 [시작]으로 변경하였습니다.",
   },
   {
-    date: "3 days ago",
-    image: "/images/avatar/small/joe.jpg",
-    meta: "8 Likes",
-    summary: "Joe Henderson posted on his page",
-    extraText:
-      "Ours is a life of constant reruns. We're always circling back to where we'd we started.",
+    date: "1 일 전",
+    meta: "start",
+    summary: "somin님이 '리액트A파트'를 [진행중]으로 변경하였습니다.",
   },
   {
-    date: "4 days ago",
-    image: "/images/avatar/small/justen.jpg",
-    meta: "41 Likes",
-    summary: "Justen Kitsune added 2 new photos of you",
-    extraText:
-      "Look at these fun pics I found from a few years ago. Good times.",
-    extraImages: [
-      "/images/wireframe/image.png",
-      "/images/wireframe/image-text.png",
-    ],
+    date: "4 일 전",
+    meta: "start",
+    summary: "somin님이 '리액트A파트'를 [시작]으로 변경하였습니다.",
   },
 ];
 
