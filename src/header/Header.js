@@ -7,6 +7,8 @@ import {
   Icon,
   Button,
   Label,
+  Card,
+  CardContent,
 } from "semantic-ui-react";
 import MailContainer from "../user/container/MailContainer";
 import qs from "qs";
@@ -29,7 +31,33 @@ class Header extends Component {
   };
 
   mail = () => {
-    this.setState({ mail: this.state.mail ? "" : <MailContainer /> });
+    this.setState({
+      mail: this.state.mail ? (
+        ""
+      ) : (
+        <Card
+          style={{
+            position: "absolute",
+            zIndex: "10",
+            right: "30px",
+            width: "300px",
+            height: "400px",
+            overflow: "scroll",
+            marginTop: "-5px",
+          }}
+        >
+          <Card.Content>
+            <Card.Header>
+              <Icon name="time" color="olive" />
+              　최근 메일함
+            </Card.Header>
+          </Card.Content>
+          <CardContent>
+            <MailContainer />
+          </CardContent>
+        </Card>
+      ),
+    });
   };
 
   render() {
@@ -60,7 +88,13 @@ class Header extends Component {
     ];
 
     return (
-      <div style={{ backgroundColor: "#8e44ad", padding: "10px" }} inverted>
+      <div
+        style={{
+          backgroundColor: "#8e44ad",
+          padding: "10px",
+          boxSizing: "border-box",
+        }}
+      >
         <Menu size="large" inverted secondary>
           <Menu.Menu position="left" style={{ display: 0 - 20 }}>
             <Image
@@ -101,7 +135,7 @@ class Header extends Component {
             </Menu.Menu>
           )}
         </Menu>
-        <div>{this.state.mail}</div>
+        {this.state.mail}
       </div>
     );
   }
