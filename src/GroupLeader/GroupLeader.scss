@@ -1,12 +1,70 @@
+.todos {
+  margin: 0 auto;
+  margin-top: -3rem;
+  padding: 2%;
+  width: 90%;
+
+  .todo-manage {
+    position: relative;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    input {
+      width: 20rem;
+    }
+
+    i {
+      position: absolute;
+      top: 22%;
+      font-size: 2.8rem !important;
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(142, 68, 173);
+      }
+    }
+  }
+
+  .todo {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    position: relative;
+
+    .todo-users {
+      position: absolute;
+      right: 5%;
+      top: 0;
+    }
+
+    .user-plus {
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      font-size: 2rem !important;
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(142, 68, 173);
+      }
+    }
+
+  }
+}
+
 .add-todo {
   z-index: 10;
   position: absolute;
   right: 5%;
   bottom: 13%;
+
   span {
     font-size: 1.3rem;
     font-weight: bold;
   }
+
   input {
     width: 20rem;
   }
