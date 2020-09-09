@@ -42,7 +42,7 @@ class Header extends Component {
             right: "30px",
             width: "300px",
             height: "400px",
-            overflow: "scroll",
+            overflow: "auto",
             marginTop: "-5px",
           }}
         >

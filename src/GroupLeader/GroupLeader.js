@@ -28,7 +28,7 @@ class GroupLeader extends Component {
           title: "First Week Subject",
           isTodo: false,
           todoList: [
-            { id: 0, title: "First Todo" },
+            { id: 0, title: "First Todo", userList: [] },
             { id: 1, title: "Second Todo" },
             { id: 2, title: "Third Todo" },
           ],
