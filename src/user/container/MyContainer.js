@@ -6,12 +6,12 @@ class MyContainer extends Component {
   render() {
     const menu = this.props.match.params.menu;
     return (
-      <Grid>
+      <Grid style={{ margin: "30px" }}>
         <Grid.Row>
-          <Grid.Column width={5}>
+          <Grid.Column width={4} >
             <MyPageSideContainer menu={menu} />
           </Grid.Column>
-          <Grid.Column width={11}>
+          <Grid.Column width={12} >
             <MyPageResultContainer menu={menu} />
           </Grid.Column>
         </Grid.Row>
