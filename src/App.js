@@ -10,7 +10,7 @@ import AddGroup from "./user/view/AddGroup";
 import SignUpPage from "./user/view/SignUp";
 import myContainer from "./user/container/MyContainer";
 import GroupListContainer from "./groupList/container/GroupListContainer";
-import GroupLeader from "./GroupLeader/GroupLeader";
+import GroupLeader from "./groupLeader/GroupLeader";
 function App() {
   return (
     <>
