@@ -5,7 +5,7 @@ import MyGroupContainer from "./MyGroupContainer";
 import MyTodoListContainer from "./MyTodoListContainer";
 
 class MyPageResultContainer extends Component {
-  render() {
+  render() { 
     const menu = this.props.menu;
 
     console.log("mypage result container 도착:url:", menu);
