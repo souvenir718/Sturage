@@ -21,44 +21,7 @@ class GroupLeader extends Component {
       subject: "",
       todo: "",
       userList: [],
-      subjectList: [
-        {
-          id: 0,
-          times: 1,
-          title: "First Week Subject",
-          isTodo: false,
-          todoList: [
-            { id: 0, title: "First Todo", userList: [] },
-            { id: 1, title: "Second Todo" },
-            { id: 2, title: "Third Todo" },
-          ],
-          userList: [],
-        },
-        {
-          id: 1,
-          times: 2,
-          title: "Second Week Subject",
-          isTodo: false,
-          todoList: [
-            { id: 0, title: "First Todo" },
-            { id: 1, title: "Second Todo" },
-            { id: 2, title: "Third Todo" },
-          ],
-          userList: [],
-        },
-        {
-          id: 2,
-          times: 3,
-          title: "Third Week Subject",
-          isTodo: false,
-          todoList: [
-            { id: 0, title: "First Todo" },
-            { id: 1, title: "Second Todo" },
-            { id: 2, title: "Third Todo" },
-          ],
-          userList: [],
-        },
-      ],
+      subjectList: this.props.subjectData
     };
 
     this.numOfSubject = this.state.subjectList.length;
@@ -92,13 +55,13 @@ class GroupLeader extends Component {
               <div className="todo" key={todo.id}>
                 <p>{todo.title}</p>
                 <div className="todo-users">
-                  {data.userList.map((data) => (
+                  {todo.userList.map((data) => (
                     <Label>{data}</Label>
                   ))}
                 </div>
                 <Icon
                   onClick={() => {
-                    this.addUser(data.id);
+                    this.addUser(data.id, todo.id);
                   }}
                   className="user-plus"
                   name="plus square"
@@ -120,12 +83,21 @@ class GroupLeader extends Component {
 
     return subjectList;
   };
-  addUser = (id) => {
+  addUser = (dataId, todoId) => {
+    console.log(dataId, todoId);
+    let newUserList = this.state.userList;
     let dataList = this.state.subjectList;
-    let subjectList = dataList.map((data) =>
-      data.id === id ? { ...data, userList: this.state.userList } : data
-    );
+    // let subjectList = dataList.map((data) =>
+    //   data.id === dataId ? { ...data, userList: this.state.userList } : data
+    // );
+    let subject = dataList.find((data) => data.id === dataId);
+    let todoList = subject.todoList;
+    let newTodoList = todoList.map((todo)=>
+    todo.id === todoId ? {...todo, userList:newUserList } : todo);
 
+    let subjectList = dataList.map((data)=>
+    data.id === dataId ? {...data, todoList : newTodoList } : data)
+    
     this.setState({
       subjectList: subjectList,
     });
@@ -145,6 +117,7 @@ class GroupLeader extends Component {
     let newTodo = {
       id: newTodoList.length,
       title: this.state.todo,
+      userList:[],
     };
     newTodoList.push(newTodo);
     let newSubjectList = dataList.map((data) =>
