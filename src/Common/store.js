@@ -1,7 +1,7 @@
 import GroupInfoStore from "../groupInfo/store/GroupInfoStore";
 import GroupListStore from "../groupList/store/GroupListStore";
 import UserStore from "../user/store/UserStore";
-import GroupLeaderStore from "../groupLeader/store/GroupLeaderStore";
+import GroupLeaderStore from "../GroupLeader/store/GroupLeaderStore";
 
 // 공통 스토어
 export default class Store {

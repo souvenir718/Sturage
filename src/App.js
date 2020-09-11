@@ -11,7 +11,7 @@ import SignUpPage from "./user/view/SignUp";
 import myContainer from "./user/container/MyContainer";
 import GroupListContainer from "./groupList/container/GroupListContainer";
 // import GroupLeader from "./groupLeader/view/GroupLeader";
-import GroupLeaderContainer from "./groupLeader/container/GroupLeaderContainer"
+import GroupLeaderContainer from "./GroupLeader/container/GroupLeaderContainer";
 function App() {
   return (
     <>
