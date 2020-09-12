@@ -14,15 +14,24 @@ class GroupLeaderContainer extends Component {
   showTodo = (id) =>{
     this.props.Store.leader.showTodo(id);
   }
-  addTodo = (id, todo) =>{
-    this.props.Store.leader.addTodo(id, todo);
+  addTodo = (id) =>{
+    this.props.Store.leader.addTodo(id);
   }
-  addUser = (dataId, userId, userList) =>{
-    this.props.Store.leader.addUser(dataId, userId, userList);
+  addUser = (dataId, userId) =>{
+    this.props.Store.leader.addUser(dataId, userId);
+  }
+  changeUser = (event, data) => {
+      this.props.Store.leader.changeUser(event, data);
+  }
+  changeTodo = (e) => {
+    this.props.Store.leader.changeTodo(e.target.value);
+  }
+  changeTitle = (e) =>{
+    this.props.Store.leader.changeTitle(e.target.value);
   }
   render() {
     const subjectData = this.props.Store.leader.getSubjectData;
-    return <GroupLeader subjectData={subjectData} deleteSubject={this.deleteSubject} addSubject={this.addSubject} showTodo={this.showTodo} addTodo={this.addTodo} addUser={this.addUser}/>;
+    return <GroupLeader subjectData={subjectData} deleteSubject={this.deleteSubject} addSubject={this.addSubject} showTodo={this.showTodo} addTodo={this.addTodo} addUser={this.addUser} changeUser={this.changeUser} changeTodo={this.changeTodo} changeTitle={this.changeTitle}/>;
   }
 }
 

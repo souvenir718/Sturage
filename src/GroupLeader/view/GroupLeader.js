@@ -18,10 +18,6 @@ class GroupLeader extends Component {
     this.state = {
       isAdd: false,
       isGroup: false,
-      subject: "",
-      todo: "",
-      userList: [],
-      subjectList: this.props.subjectData
     };
 
     this.numOfSubject = this.props.subjectData.length;
@@ -48,7 +44,7 @@ class GroupLeader extends Component {
           <div className="todos">
             <div className="todo-manage">
               <span>Todo : </span>
-              <Input onChange={(e) => this.changeTodo(e)} />
+              <Input onChange={(e) => this.props.changeTodo(e)} />
               <Icon name="plus square" onClick={() => this.props.addTodo(data.id, this.state.todo)} />
             </div>
             {data.todoList.map((todo) => (
@@ -61,7 +57,7 @@ class GroupLeader extends Component {
                 </div>
                 <Icon
                   onClick={() => {
-                    this.props.addUser(data.id, todo.id, this.state.userList);
+                    this.props.addUser(data.id, todo.id);
                   }}
                   className="user-plus"
                   name="plus square"
@@ -72,7 +68,7 @@ class GroupLeader extends Component {
                   multiple
                   selection
                   options={users}
-                  onChange={this.changeUser}
+                  onChange={this.props.changeUser}
                 />
               </div>
             ))}
@@ -84,28 +80,14 @@ class GroupLeader extends Component {
     return subjectList;
   };
 
-  changeUser = (event, data) => {
-    let newUserList = data.value;
-    this.setState({
-      userList: newUserList,
-    });
-  };
-  changeTodo = (e) => {
-    let newTodo = e.target.value;
-    this.setState({
-      todo: newTodo,
-    });
-  };
-
   onClickAddBtn = () => {
     let isAdd = this.state.isAdd;
-    let newSubject = this.state.subject;
     if (!isAdd) {
       this.setState({
         isAdd: !isAdd,
       });
     } else {
-      this.props.addSubject(newSubject, this.numOfSubject);
+      this.props.addSubject(this.numOfSubject);
       this.numOfSubject++;
       this.setState({
         isAdd: !isAdd,
@@ -119,13 +101,7 @@ class GroupLeader extends Component {
       isGroup: !isGroup,
     });
   };
-  changeSubject = (e) => {
-    let newSubject = e.target.value;
-    this.setState({
-      subject: newSubject,
-    });
-  };
-
+  
   render() {
     let subjectList = this.getList();
     return (
@@ -179,7 +155,7 @@ class GroupLeader extends Component {
               {this.state.isAdd && (
                 <div className="add-todo">
                   <span>Subject : </span>
-                  <Input onChange={(e) => this.changeSubject(e)} />
+                  <Input onChange={(e) => this.props.changeTitle(e)} />
                 </div>
               )}
             </Grid.Column>
