@@ -5,9 +5,33 @@ import { inject, observer } from "mobx-react";
 @inject("Store")
 @observer
 class GroupLeaderContainer extends Component {
+  deleteSubject = (id) =>{
+    this.props.Store.leader.deleteSubject(id);
+  }
+  addSubject =  (newTitle, id) =>{
+    this.props.Store.leader.addSubject(newTitle, id);
+  }
+  showTodo = (id) =>{
+    this.props.Store.leader.showTodo(id);
+  }
+  addTodo = (id) =>{
+    this.props.Store.leader.addTodo(id);
+  }
+  addUser = (dataId, userId) =>{
+    this.props.Store.leader.addUser(dataId, userId);
+  }
+  changeUser = (event, data) => {
+      this.props.Store.leader.changeUser(event, data);
+  }
+  changeTodo = (e) => {
+    this.props.Store.leader.changeTodo(e.target.value);
+  }
+  changeTitle = (e) =>{
+    this.props.Store.leader.changeTitle(e.target.value);
+  }
   render() {
     const subjectData = this.props.Store.leader.getSubjectData;
-    return <GroupLeader subjectData={subjectData} />;
+    return <GroupLeader subjectData={subjectData} deleteSubject={this.deleteSubject} addSubject={this.addSubject} showTodo={this.showTodo} addTodo={this.addTodo} addUser={this.addUser} changeUser={this.changeUser} changeTodo={this.changeTodo} changeTitle={this.changeTitle}/>;
   }
 }
 
