@@ -24,24 +24,24 @@ class GroupLeader extends Component {
       subjectList: this.props.subjectData
     };
 
-    this.numOfSubject = this.state.subjectList.length;
+    this.numOfSubject = this.props.subjectData.length;
   }
   getList = () => {
-    let dataList = this.state.subjectList;
+    let dataList = this.props.subjectData;
     let subjectList = dataList.map((data) => (
       <Fragment key={data.id}>
         <div className="leader-content">
           <p className="content-header">{data.times}. Times</p>
           <span
             className="content-title"
-            onClick={() => this.onClickAddTodo(data.id)}
+            onClick={() => this.props.showTodo(data.id)}
           >
             {data.title}
           </span>
 
           <Icon
             name="minus square"
-            onClick={() => this.deleteSubject(data.id)}
+            onClick={() => this.props.deleteSubject(data.id)}
           />
         </div>
         {data.isTodo && (
@@ -49,7 +49,7 @@ class GroupLeader extends Component {
             <div className="todo-manage">
               <span>Todo : </span>
               <Input onChange={(e) => this.changeTodo(e)} />
-              <Icon name="plus square" onClick={() => this.addTodo(data.id)} />
+              <Icon name="plus square" onClick={() => this.props.addTodo(data.id, this.state.todo)} />
             </div>
             {data.todoList.map((todo) => (
               <div className="todo" key={todo.id}>
@@ -61,7 +61,7 @@ class GroupLeader extends Component {
                 </div>
                 <Icon
                   onClick={() => {
-                    this.addUser(data.id, todo.id);
+                    this.props.addUser(data.id, todo.id, this.state.userList);
                   }}
                   className="user-plus"
                   name="plus square"
@@ -83,25 +83,6 @@ class GroupLeader extends Component {
 
     return subjectList;
   };
-  addUser = (dataId, todoId) => {
-    console.log(dataId, todoId);
-    let newUserList = this.state.userList;
-    let dataList = this.state.subjectList;
-    // let subjectList = dataList.map((data) =>
-    //   data.id === dataId ? { ...data, userList: this.state.userList } : data
-    // );
-    let subject = dataList.find((data) => data.id === dataId);
-    let todoList = subject.todoList;
-    let newTodoList = todoList.map((todo)=>
-    todo.id === todoId ? {...todo, userList:newUserList } : todo);
-
-    let subjectList = dataList.map((data)=>
-    data.id === dataId ? {...data, todoList : newTodoList } : data)
-    
-    this.setState({
-      subjectList: subjectList,
-    });
-  };
 
   changeUser = (event, data) => {
     let newUserList = data.value;
@@ -109,59 +90,10 @@ class GroupLeader extends Component {
       userList: newUserList,
     });
   };
-  addTodo = (id) => {
-    let dataList = this.state.subjectList;
-    let subject = dataList.find((data) => data.id === id);
-
-    let newTodoList = subject.todoList;
-    let newTodo = {
-      id: newTodoList.length,
-      title: this.state.todo,
-      userList:[],
-    };
-    newTodoList.push(newTodo);
-    let newSubjectList = dataList.map((data) =>
-      data.id === id ? { ...data, todoList: newTodoList } : data
-    );
-    this.setState({
-      subjectList: newSubjectList,
-    });
-  };
   changeTodo = (e) => {
     let newTodo = e.target.value;
     this.setState({
       todo: newTodo,
-    });
-  };
-
-  onClickAddTodo = (id) => {
-    let dataList = this.state.subjectList;
-
-    let subjectList = dataList.map((data) =>
-      data.id === id ? { ...data, isTodo: !data.isTodo } : data
-    );
-
-    this.setState({
-      subjectList: subjectList,
-    });
-  };
-  addSubject = (newSubject) => {
-    let dataList = this.state.subjectList;
-
-    let newData = {
-      id: this.numOfSubject,
-      times: this.numOfSubject + 1,
-      title: newSubject,
-      isTodo: false,
-      todoList: [],
-      userList: [],
-    };
-    this.numOfSubject++;
-
-    dataList.push(newData);
-
-    this.setState({
-      subjectList: dataList,
     });
   };
 
@@ -173,21 +105,12 @@ class GroupLeader extends Component {
         isAdd: !isAdd,
       });
     } else {
-      this.addSubject(newSubject);
+      this.props.addSubject(newSubject, this.numOfSubject);
+      this.numOfSubject++;
       this.setState({
         isAdd: !isAdd,
       });
     }
-  };
-
-  deleteSubject = (id) => {
-    let dataList = this.state.subjectList;
-
-    dataList = dataList.filter((data) => data.id !== id);
-
-    this.setState({
-      subjectList: dataList,
-    });
   };
 
   showGroup = () => {
