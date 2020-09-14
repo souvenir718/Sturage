@@ -45,14 +45,17 @@ class GroupLeader extends Component {
             <div className="todo-manage">
               <span>Todo : </span>
               <Input onChange={(e) => this.props.changeTodo(e)} />
-              <Icon name="plus square" onClick={() => this.props.addTodo(data.id, this.state.todo)} />
+              <Icon
+                name="plus square"
+                onClick={() => this.props.addTodo(data.id, this.state.todo)}
+              />
             </div>
             {data.todoList.map((todo) => (
               <div className="todo" key={todo.id}>
                 <p>{todo.title}</p>
                 <div className="todo-users">
-                  {todo.userList.map((data) => (
-                    <Label>{data}</Label>
+                  {todo.userList.map((data, idx) => (
+                    <Label key={idx}>{data}</Label>
                   ))}
                 </div>
                 <Icon
@@ -101,7 +104,7 @@ class GroupLeader extends Component {
       isGroup: !isGroup,
     });
   };
-  
+
   render() {
     let subjectList = this.getList();
     return (

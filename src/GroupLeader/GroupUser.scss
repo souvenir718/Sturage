@@ -1,0 +1,107 @@
+.leader-sidebar {
+  position: absolute;
+  height: 100vh;
+  background: rgb(58, 58, 58);
+  width: 20rem;
+  font-family: "Cute Font', cursive";
+  padding-left: 2rem;
+  z-index: 10;
+
+  .sidebar-content {
+    padding-top: 10rem;
+    width: 88%;
+
+    .sidebar-group {
+      min-height: 10rem;
+      color: white;
+      padding-left: 1rem;
+      padding-top: 1.5rem;
+      font-size: 1.5rem;
+
+      .header {
+        color: white;
+        font-family: "Cute Font', cursive" !important;
+        cursor: pointer;
+        position: relative;
+
+        i {
+          position: absolute;
+          top: 10%;
+
+          &:hover {
+            color: rgb(142, 68, 173);
+          }
+        }
+      }
+
+      .group-li {
+        font-size: 1.5rem;
+
+        li {
+          margin-bottom: 1rem;
+          list-style: none;
+        }
+      }
+    }
+
+    .sidebar-btns {
+      padding-left: 1rem;
+      padding-top: 3rem;
+
+      button {
+        font-family: "Cute Font', cursive";
+        font-size: 1rem !important;
+        width: 100%;
+        height: 2.7rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+  }
+}
+
+.groupuser-container {
+  font-family: "Cute Font', cursive";
+  padding-top: 5rem !important;
+  padding-left: 10rem !important;
+  .groupuser-header {
+    text-align: center !important;
+    padding-bottom: 2rem !important;
+    border-bottom: 0.1rem solid;
+
+    .header {
+      font-size: 4rem !important;
+      color: rgb(142, 68, 173);
+    }
+  }
+
+  .groupuser-content {
+    margin-top: 1rem !important;
+    padding-left: 10% !important;
+    min-height: 45rem;
+    position: relative;
+    .user-container {
+      min-height: 30rem;
+      padding-left: 7%;
+      width: 20rem;
+      border: 0.2rem solid black;
+      overflow: hidden;
+      .user-checkbox {
+        display: none;
+      }
+      .user {
+        float: left;
+        margin: 1rem;
+      }
+    }
+    .right-btn {
+      position: absolute;
+      top: 33%;
+      left: -10%;
+      font-size: 5rem;
+      cursor: pointer;
+      &:hover {
+        color: rgb(142, 68, 173);
+      }
+    }
+  }
+}
