@@ -1,9 +1,9 @@
 import { observable, computed, action, get } from "mobx";
 import categoryData from "../data/categoryData.js";
-import groupData from "../data/groupData";
+// import groupData from "../data/groupData";
 export default class GroupListStore {
   @observable categoryData = categoryData;
-  @observable groupData = groupData;
+  @observable groupData = [];
 
   @computed
   get getCategoryData() {
@@ -12,6 +12,12 @@ export default class GroupListStore {
 
   @computed
   get getGroupData() {
-    return groupData;
+    return this.groupData ? this.groupData.slice("") : [];
+  }
+
+  @action
+  setGroupData(groupDataApi) {
+    this.groupData = groupDataApi;
+    console.log(this.groupData);
   }
 }

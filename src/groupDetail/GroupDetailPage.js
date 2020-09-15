@@ -3,14 +3,60 @@ import { Grid, Header, Item, Button, Image, Modal } from "semantic-ui-react";
 import "./GroupDetailPage.scss";
 import Todo from "./Todo";
 import Sidebar from "./Sidebar";
+import axios from "axios";
+
 class GroupDetailPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isFlag: false,
       open: false,
+      detail_data: "",
     };
   }
+
+  componentDidMount() {
+    const group_id = this.props.match.params.id;
+    console.log(group_id);
+    const api = `/api/groups/${group_id}`;
+    axios
+      .get(api)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ detail_data: res.data });
+      })
+      .catch(function (error) {
+        if (error.response) {
+          const err = {
+            header: error.response.headers,
+            code: error.response.status,
+            mssage: error.response.data.detail,
+          };
+          console.log(err);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error.config.detail);
+      });
+  }
+
+  createSuject = () => {
+    const detail = this.state.detail_data;
+    return detail.subjectList.map((subject) => {
+      return (
+        <Todo
+          key={subject.subject_id}
+          subject_id={subject.subject_id}
+          title={subject.title}
+          desc={"Subject에는 따로 desc라는 컬럼을 안만들었어 띵킹필요"}
+          onClick={this.onOpen}
+        />
+      );
+    });
+  };
+
   onOpen = () => {
     console.log("open");
     this.setState({
@@ -36,6 +82,8 @@ class GroupDetailPage extends Component {
     }
   };
   render() {
+    const { detail_data } = this.state;
+
     return (
       <>
         {this.state.isFlag && <Sidebar />}
@@ -75,7 +123,8 @@ class GroupDetailPage extends Component {
           <Grid.Row centered>
             <Grid.Column width={8} className="detailpage-todos">
               <Item.Group>
-                <Todo
+                {detail_data ? this.createSuject() : <div>NO DATA</div>}
+                {/* <Todo
                   title={"1.Times"}
                   desc={"I Plan to do Noting Today 1"}
                   onClick={this.onOpen}
@@ -94,7 +143,7 @@ class GroupDetailPage extends Component {
                   title={"4.Times"}
                   desc={"I Plan to do Noting Today 1"}
                   onClick={this.onOpen}
-                />
+                /> */}
               </Item.Group>
             </Grid.Column>
           </Grid.Row>
