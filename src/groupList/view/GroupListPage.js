@@ -16,7 +16,11 @@ class GroupListPage extends Component {
     let groupList = dataList.map((data) => (
       <ListCard
         key={data.id}
-        src={data.src}
+        group_id={data.id}
+        src={
+          // 승훈 : 아직 이미지 처리는 안했음 임시로 기본이미지세팅
+          data.src ? data.src : "Image/GroupListPageImage/book-863418_1920.jpg"
+        }
         title={data.title}
         desc={data.desc}
       />

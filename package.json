@@ -2,6 +2,7 @@
   "name": "sturage",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.10.4",

@@ -21,7 +21,7 @@ ReactDOM.render(
           "/",
           "/list",
           "/info",
-          "/detail",
+          "/detail/:id",
           "/addGroup",
           "/signUp",
           "/my/:menu",
