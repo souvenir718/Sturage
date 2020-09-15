@@ -5,16 +5,16 @@ import MyGroupContainer from "./MyGroupContainer";
 import MyTodoListContainer from "./MyTodoListContainer";
 
 class MyPageResultContainer extends Component {
-  render() { 
+  render() {
     const menu = this.props.menu;
 
     console.log("mypage result container 도착:url:", menu);
     return (
-      <Container>
+      <div style={{ marginTop: "20px" }}>
         {menu === "profile" ? <MyProfileContainer /> : ""}
         {menu === "group" ? <MyGroupContainer /> : ""}
         {menu === "todoList" ? <MyTodoListContainer /> : ""}
-      </Container>
+      </div>
     );
   }
 }

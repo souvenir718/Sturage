@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Container, Card, Icon, Image } from "semantic-ui-react";
+import { Menu, Container, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 class MyPageSideContainer extends Component {
@@ -9,8 +9,15 @@ class MyPageSideContainer extends Component {
     const activeItem = this.props.menu;
 
     return (
-      <Container>
-        <Menu pointing secondary vertical>
+      <div style={{ margin: "40px 0 0 30px" }}>
+        <Menu
+          pointing
+          secondary
+          vertical
+          style={{
+            fontSize: "20px",
+          }}
+        >
           <Menu.Item
             name="profile"
             active={activeItem === "profile"}
@@ -36,7 +43,7 @@ class MyPageSideContainer extends Component {
             content="내 할일 보기"
           />
         </Menu>
-      </Container>
+      </div>
     );
   }
 }
