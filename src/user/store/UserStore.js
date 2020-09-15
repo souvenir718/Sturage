@@ -5,6 +5,10 @@ export default class UserStore {
   tag;
   @observable
   username;
+  @observable
+  open;
+  @observable
+  dimmer;
 
   @computed
   get getUsername() {
@@ -14,4 +18,21 @@ export default class UserStore {
   get getTag() {
     return this.tag ? this.tag : null;
   }
+  @computed
+  get getOpen() {
+    return this.open ? this.open : false;
+  }
+  @computed
+  get getDimmer() {
+    return this.dimmer ? this.dimmer : undefined;
+  }
+
+
+  @action
+  setModal(open, dimmer){
+    this.open = open;
+    this.dimmer=dimmer;
+   }
+
+
 }

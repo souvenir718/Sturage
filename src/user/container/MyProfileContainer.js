@@ -1,23 +1,18 @@
 import React, { Component } from "react";
-import {
-  Icon,
-  Container,
-  Button,
-  Form,
-  Input,
-  TextArea,
-} from "semantic-ui-react";
+import { Icon, Button, Form, Input, TextArea } from "semantic-ui-react";
+import ModalQuit from "../view/ModalQuit";
+import { inject, observer } from "mobx-react";
+
+@inject("Store")
+@observer
 class MyProfileContainer extends Component {
+  user = this.props.Store.user;
+
   render() {
-    const options = [
-      { key: "m", text: "Male", value: "male" },
-      { key: "f", text: "Female", value: "female" },
-      { key: "o", text: "Other", value: "other" },
-    ];
     return (
-      <Container>
-        <h2 style={{ margin: "20px" }}>
-          <Icon name="pen square" />내 정보 보기
+      <div>
+        <h2 style={{ margin: "40px 0 40px 0" }}>
+          <Icon name="id badge" />내 정보 보기
         </h2>
         <Form style={{ margin: "40px 20px" }}>
           <Form.Field
@@ -58,15 +53,26 @@ class MyProfileContainer extends Component {
             placeholder="introduce"
           />
           <Form.Checkbox label="I agree to the Terms and Conditions" />
-          <Form.Field
-            id="form-button-control-public"
-            control={Button}
-            icon="pencil"
-            content="내 정보 수정하기 "
-            color="purple"
-          />
+          <Form.Group>
+            <Form.Field
+              id="form-button-control-public"
+              icon="pencil"
+              content="내 정보 수정하기 "
+              color="purple"
+              control={Button}
+            />
+            <Button
+              id="form-button-control-public"
+              icon="exclamation triangle"
+              content="탈퇴하기 "
+              color="black"
+              float="right"
+              onClick={() => this.user.setModal(true, "inverted")}
+            />
+          </Form.Group>
         </Form>
-      </Container>
+        <ModalQuit />
+      </div>
     );
   }
 }
