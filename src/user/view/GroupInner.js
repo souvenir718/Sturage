@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Button, Card, Modal } from "semantic-ui-react";
+import { Icon, Button, Card, Label } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import ModalQuit from "../view/ModalQuit";
 import { inject, observer } from "mobx-react";
@@ -15,8 +15,10 @@ class GroupInner extends Component {
       <div>
         <Card style={{ width: "500px" }}>
           <Card.Content>
-            <Card.Header>{group.title}</Card.Header>
-            <Card.Meta>{group.joinDate}</Card.Meta>
+            <Card.Header>
+              {group.title}{" "}
+              <Label style={{ float: "right" }}>{group.category}</Label>
+            </Card.Header>
             <Card.Description>
               {group.Description}
               <strong>{group.status}</strong>
@@ -24,12 +26,7 @@ class GroupInner extends Component {
           </Card.Content>
           <Card.Content extra>
             <div className="ui three buttons">
-              <Button
-                basic
-                color="purple"
-                as={Link}
-                to={`/groupDetail?id=${group.id}`}
-              >
+              <Button basic color="purple" as={Link} to={`/detail/${group.id}`}>
                 <Icon name="home" color="purple" />
                 그룹 홈으로
               </Button>

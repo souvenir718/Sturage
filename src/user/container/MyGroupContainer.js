@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Icon, Container, Button, Card } from "semantic-ui-react";
 import GroupInner from "../view/GroupInner";
-import data from "../data/userData";
+import data from "../data/data2";
 class MyGroupContainer extends Component {
   render() {
-    let groupInner = data.attendGroups.map((obj, key) => {
+    let groupInner = data.map((obj, key) => {
       console.log(obj);
       return <GroupInner key={key} group={obj} />;
     });

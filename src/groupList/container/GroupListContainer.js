@@ -37,7 +37,7 @@ class GroupListContainer extends Component {
 
     return (
       <>
-        {groupData.length != 0 ? (
+        {groupData.length !== 0 ? (
           <GroupListPage groupData={groupData} categoryData={categoryData} />
         ) : (
           <div>TEST</div>

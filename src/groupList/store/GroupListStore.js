@@ -18,6 +18,5 @@ export default class GroupListStore {
   @action
   setGroupData(groupDataApi) {
     this.groupData = groupDataApi;
-    console.log(this.groupData);
   }
 }
