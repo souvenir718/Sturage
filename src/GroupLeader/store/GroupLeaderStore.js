@@ -1,7 +1,11 @@
-import { observable, computed, action } from "mobx";
+import { observable, computed, action, isArrayLike } from "mobx";
 import subjectData from "../data/subjectData";
+import attends from "../data/attends";
+
 export default class GroupLeaderStore {
   @observable subjectData = subjectData;
+  @observable attends = attends;
+  @observable members = [];
 
   @observable userList = [];
   @observable tmpTodo = "";
@@ -10,6 +14,14 @@ export default class GroupLeaderStore {
   @computed
   get getSubjectData() {
     return this.subjectData;
+  }
+  @computed
+  get getAttends() {
+    return this.attends;
+  }
+  @computed
+  get getMembers() {
+    return this.members;
   }
 
   @action
@@ -93,4 +105,23 @@ export default class GroupLeaderStore {
   changeTitle(newTitle) {
     this.tmpTitle = newTitle;
   }
+
+  //groupuser
+  @action
+  toggle = (dataId) => {
+    let newAttends = this.attends.map((data) =>
+      data.id === dataId ? { ...data, isMember: true } : data
+    );
+    this.attends = newAttends;
+    // this.setState((prevState) => ({ checked: !prevState.checked }));
+  };
+
+  @action
+  attendsToMembers = () => {
+    let newMembers = this.attends.filter((data) => data.isMember === true);
+    let newAttends = this.attends.filter((data) => data.isMember === false);
+
+    this.attends = newAttends;
+    this.members = this.members.concat(newMembers);
+  };
 }

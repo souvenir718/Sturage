@@ -81,16 +81,20 @@
     position: relative;
     .user-container {
       min-height: 30rem;
-      padding-left: 7%;
-      width: 20rem;
+      padding: 3%;
+      width: 30rem;
       border: 0.2rem solid black;
       overflow: hidden;
       .user-checkbox {
-        // display: none;
+        display: none;
       }
       .user {
         float: left;
         margin: 1rem;
+
+        button {
+          font-size: 1.2rem;
+        }
       }
     }
     .right-btn {
@@ -104,4 +108,9 @@
       }
     }
   }
+}
+.submit-btn {
+  background-color: rgb(142, 68, 173) !important;
+  color: white !important;
+  margin-left: 15rem !important;
 }
