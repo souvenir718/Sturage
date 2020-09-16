@@ -9,6 +9,10 @@ export default class UserStore {
   open;
   @observable
   dimmer;
+  @observable
+  progress;
+  @observable
+  todo_id;
 
   @computed
   get getUsername() {
@@ -26,13 +30,24 @@ export default class UserStore {
   get getDimmer() {
     return this.dimmer ? this.dimmer : undefined;
   }
-
+  @computed
+  get getProgress() {
+    return this.progress ? this.progress : "할당됨";
+  }
+  @computed
+  get getTodoId() {
+    return this.progress ? this.todoId : "";
+  }
 
   @action
-  setModal(open, dimmer){
+  setModal(open, dimmer) {
     this.open = open;
-    this.dimmer=dimmer;
-   }
+    this.dimmer = dimmer;
+  }
 
-
+  @action
+  setprogress(todo_id, changedProgress) {
+    this.todo_id = todo_id;
+    this.progress = changedProgress;
+  }
 }

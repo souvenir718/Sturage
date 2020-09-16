@@ -25,7 +25,7 @@ class GroupInner extends Component {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <div className="ui three buttons">
+            <div className="ui two buttons">
               <Button basic color="purple" as={Link} to={`/detail/${group.id}`}>
                 <Icon name="home" color="purple" />
                 그룹 홈으로
