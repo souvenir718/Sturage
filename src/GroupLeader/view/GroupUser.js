@@ -8,14 +8,15 @@ class GroupUser extends Component {
       isGroup: false,
     };
   }
-  getList = (dataList) => {
+  getAttends = (dataList) => {
+    console.log(dataList);
     let userList = dataList.map((data) => (
       <div key={data.id} className="user">
         <Button
           toggle
           active={data.isMember}
           color={data.isMember ? "purple" : "blue"}
-          onClick={() => this.props.toggle(data.id)}
+          onClick={() => this.props.toggleAttends(data.id)}
         >
           {data.name}
         </Button>
@@ -23,6 +24,24 @@ class GroupUser extends Component {
     ));
     return userList;
   };
+
+  getMembers = (dataList) => {
+    console.log(dataList);
+    let userList = dataList.map((data) => (
+      <div key={data.id} className="user">
+        <Button
+          toggle
+          active={data.isMember}
+          color={data.isMember ? "purple" : "blue"}
+          onClick={() => this.props.toggleMembers(data.id)}
+        >
+          {data.name}
+        </Button>
+      </div>
+    ));
+    return userList;
+  };
+
   showGroup = () => {
     let isGroup = this.state.isGroup;
     this.setState({
@@ -57,7 +76,7 @@ class GroupUser extends Component {
           <Grid.Row centered className="groupuser-content">
             <Grid.Column width={5}>
               <Header as="h2">Attends</Header>
-              <div className="user-container">{this.getList(attends)}</div>
+              <div className="user-container">{this.getAttends(attends)}</div>
             </Grid.Column>
             <Grid.Column width={2}>
               <Icon
@@ -65,12 +84,17 @@ class GroupUser extends Component {
                 name="caret square right"
                 onClick={this.props.attendsToMembers}
               />
+              <Icon
+                className="left-btn"
+                name="caret square left"
+                onClick={this.props.membersToAttends}
+              />
             </Grid.Column>
             <Grid.Column width={5}>
               <Header as="h2">
                 Members <Button className="submit-btn">Submit</Button>
               </Header>
-              <div className="user-container">{this.getList(members)}</div>
+              <div className="user-container">{this.getMembers(members)}</div>
             </Grid.Column>
           </Grid.Row>
         </Grid>

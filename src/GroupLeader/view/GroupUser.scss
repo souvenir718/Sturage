@@ -76,7 +76,7 @@
 
   .groupuser-content {
     margin-top: 1rem !important;
-    padding-left: 10% !important;
+    padding-left: 5rem !important;
     min-height: 45rem;
     position: relative;
     .user-container {
@@ -99,8 +99,18 @@
     }
     .right-btn {
       position: absolute;
-      top: 33%;
-      left: -10%;
+      top: 28%;
+      left: 2.5rem;
+      font-size: 5rem;
+      cursor: pointer;
+      &:hover {
+        color: rgb(142, 68, 173);
+      }
+    }
+    .left-btn {
+      position: absolute;
+      top: 45%;
+      left: 2.5rem;
       font-size: 5rem;
       cursor: pointer;
       &:hover {
