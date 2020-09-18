@@ -1,6 +1,26 @@
 import React, { Component } from "react";
-import { Button, Grid, Header, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button, Dropdown, Grid, Header, Icon } from "semantic-ui-react";
 import "./GroupUser.scss";
+
+const groups = [
+  {
+    key: "A Group",
+    text: "A Group",
+    value: "A Group",
+  },
+  {
+    key: "B Group",
+    text: "B Group",
+    value: "B Group",
+  },
+  {
+    key: "C Group",
+    text: "C Group",
+    value: "C Group",
+  },
+];
+
 class GroupUser extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +72,7 @@ class GroupUser extends Component {
     const { attends, members } = this.props;
     return (
       <>
-        <div className="leader-sidebar">
+        {/* <div className="leader-sidebar">
           <div className="sidebar-content">
             <div className="sidebar-group">
               <Header>
@@ -66,15 +86,26 @@ class GroupUser extends Component {
               )}
             </div>
           </div>
-        </div>
+        </div> */}
         <Grid className="groupuser-container">
           <Grid.Row centered>
             <Grid.Column width={10} className="groupuser-header">
-              <Header as="h1">A Group</Header>
+              <Header as="h1">
+                <span>
+                  <Dropdown
+                    inline
+                    options={groups}
+                    defaultValue={groups[0].value}
+                  />
+                </span>
+              </Header>
+              <Button className="manage-subject-btn" as={Link} to={`/leader`}>
+                manage subject
+              </Button>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row centered className="groupuser-content">
-            <Grid.Column width={5}>
+            <Grid.Column width={4}>
               <Header as="h2">Attends</Header>
               <div className="user-container">{this.getAttends(attends)}</div>
             </Grid.Column>
@@ -90,7 +121,7 @@ class GroupUser extends Component {
                 onClick={this.props.membersToAttends}
               />
             </Grid.Column>
-            <Grid.Column width={5}>
+            <Grid.Column width={4}>
               <Header as="h2">
                 Members <Button className="submit-btn">Submit</Button>
               </Header>
