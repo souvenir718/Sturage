@@ -50,7 +50,7 @@ class GroupDetailPage extends Component {
           key={subject.subject_id}
           subject_id={subject.subject_id}
           title={subject.title}
-          desc={"Subject에는 따로 desc라는 컬럼을 안만들었어 띵킹필요"}
+          desc={subject.description}
           onClick={this.onOpen}
         />
       );
