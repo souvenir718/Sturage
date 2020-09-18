@@ -1,3 +1,19 @@
+.menu {
+  border: 0.1rem solid rgb(142, 68, 173) !important;
+}
+.item {
+  width: 18rem !important;
+  &:hover {
+    background-color: rgb(142, 68, 173) !important;
+    color: white !important;
+  }
+}
+
+.item.selected {
+  background-color: rgb(142, 68, 173) !important;
+  color: white !important;
+}
+
 .todos {
   margin: 0 auto;
   margin-top: -3rem;
@@ -50,7 +66,6 @@
         color: rgb(142, 68, 173);
       }
     }
-
   }
 }
 
@@ -143,6 +158,22 @@
     .header {
       font-size: 4rem !important;
       color: rgb(142, 68, 173);
+      i {
+        &:hover {
+          color: black;
+        }
+      }
+    }
+    .manage-user-btn {
+      position: absolute;
+      left: 0;
+      bottom: 1rem;
+      color: white;
+      background-color: black;
+      &:hover {
+        background-color: rgb(142, 68, 173);
+        color: white;
+      }
     }
 
     i {
@@ -164,10 +195,11 @@
     min-height: 45rem;
 
     .leader-content {
+      border: 0.1rem solid rgb(142, 68, 173);
       margin: 0 auto;
       width: 95%;
       height: 8rem;
-      background-color: rgb(224, 224, 224);
+      background-color: white;
       padding: 1rem;
       margin-bottom: 3rem;
       position: relative;

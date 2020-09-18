@@ -108,14 +108,21 @@ export default class GroupLeaderStore {
 
   //groupuser
   @action
-  toggle = (dataId) => {
+  toggleAttends = (dataId) => {
     let newAttends = this.attends.map((data) =>
-      data.id === dataId ? { ...data, isMember: true } : data
+      data.id === dataId ? { ...data, isMember: !data.isMember } : data
     );
     this.attends = newAttends;
     // this.setState((prevState) => ({ checked: !prevState.checked }));
   };
 
+  @action
+  toggleMembers = (dataId) => {
+    let newMembers = this.members.map((data) =>
+      data.id === dataId ? { ...data, isMember: !data.isMember } : data
+    );
+    this.members = newMembers;
+  };
   @action
   attendsToMembers = () => {
     let newMembers = this.attends.filter((data) => data.isMember === true);
@@ -123,5 +130,14 @@ export default class GroupLeaderStore {
 
     this.attends = newAttends;
     this.members = this.members.concat(newMembers);
+  };
+
+  @action
+  membersToAttends = () => {
+    let newMembers = this.members.filter((data) => data.isMember === true);
+    let newAttends = this.members.filter((data) => data.isMember === false);
+
+    this.attends = this.attends.concat(newAttends);
+    this.members = newMembers;
   };
 }

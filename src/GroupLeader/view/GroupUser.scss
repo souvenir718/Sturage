@@ -1,3 +1,19 @@
+.menu {
+  border: 0.1rem solid rgb(142, 68, 173) !important;
+}
+.item {
+  width: 18rem !important;
+  &:hover {
+    background-color: rgb(142, 68, 173) !important;
+    color: white !important;
+  }
+}
+
+.item.selected {
+  background-color: rgb(142, 68, 173) !important;
+  color: white !important;
+}
+
 .leader-sidebar {
   position: absolute;
   height: 100vh;
@@ -62,7 +78,7 @@
 .groupuser-container {
   font-family: "Cute Font', cursive";
   padding-top: 5rem !important;
-  padding-left: 10rem !important;
+  // padding-left: 10rem !important;
   .groupuser-header {
     text-align: center !important;
     padding-bottom: 2rem !important;
@@ -71,12 +87,29 @@
     .header {
       font-size: 4rem !important;
       color: rgb(142, 68, 173);
+      i {
+        &:hover {
+          color: black;
+        }
+      }
+    }
+
+    .manage-subject-btn {
+      position: absolute;
+      left: 0;
+      bottom: 1rem;
+      color: white;
+      background-color: black;
+      &:hover {
+        background-color: rgb(142, 68, 173);
+        color: white;
+      }
     }
   }
 
   .groupuser-content {
     margin-top: 1rem !important;
-    padding-left: 10% !important;
+    // padding-left: 5rem !important;
     min-height: 45rem;
     position: relative;
     .user-container {
@@ -99,8 +132,18 @@
     }
     .right-btn {
       position: absolute;
-      top: 33%;
-      left: -10%;
+      top: 28%;
+      left: 4rem;
+      font-size: 5rem;
+      cursor: pointer;
+      &:hover {
+        color: rgb(142, 68, 173);
+      }
+    }
+    .left-btn {
+      position: absolute;
+      top: 45%;
+      left: 4rem;
       font-size: 5rem;
       cursor: pointer;
       &:hover {

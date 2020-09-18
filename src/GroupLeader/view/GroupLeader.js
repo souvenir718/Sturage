@@ -1,6 +1,15 @@
 import React, { Component, Fragment } from "react";
 import "./GroupLeader.scss";
-import { Grid, Header, Icon, Input, Dropdown, Label } from "semantic-ui-react";
+import {
+  Grid,
+  Header,
+  Icon,
+  Input,
+  Dropdown,
+  Label,
+  Button,
+} from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const users = [
   { key: "subin", text: "Subin", value: "subin" },
@@ -10,6 +19,24 @@ const users = [
   { key: "subin4", text: "Subin4", value: "subin4" },
   { key: "subin5", text: "Subin5", value: "subin5" },
   { key: "subin6", text: "Subin6", value: "subin6" },
+];
+
+const groups = [
+  {
+    key: "A Group",
+    text: "A Group",
+    value: "A Group",
+  },
+  {
+    key: "B Group",
+    text: "B Group",
+    value: "B Group",
+  },
+  {
+    key: "C Group",
+    text: "C Group",
+    value: "C Group",
+  },
 ];
 
 class GroupLeader extends Component {
@@ -109,11 +136,12 @@ class GroupLeader extends Component {
     let subjectList = this.getList();
     return (
       <>
-        <div className="leader-sidebar">
+        {/* <div className="leader-sidebar">
           <div className="sidebar-content">
             <div className="sidebar-group">
               <Header>
-                A Group <Icon name="angle down" onClick={this.showGroup} />
+               
+                <Icon name="angle down" onClick={this.showGroup} />
               </Header>
               {this.state.isGroup && (
                 <ul className="group-li">
@@ -149,11 +177,22 @@ class GroupLeader extends Component {
               )}
             </div>
           </div>
-        </div>
+        </div> */}
         <Grid className="leader-container">
           <Grid.Row centered>
             <Grid.Column width={8} className="leader-header">
-              <Header as="h1">A Group</Header>
+              <Header as="h1">
+                <span>
+                  <Dropdown
+                    inline
+                    options={groups}
+                    defaultValue={groups[0].value}
+                  />
+                </span>
+              </Header>
+              <Button className="manage-user-btn" as={Link} to={`/groupuser`}>
+                manage user
+              </Button>
               <Icon name="plus square" onClick={this.onClickAddBtn} />
               {this.state.isAdd && (
                 <div className="add-todo">
