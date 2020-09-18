@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  Segment,
   Menu,
   Dropdown,
   Image,
@@ -14,6 +13,7 @@ import MailContainer from "../user/container/MailContainer";
 import qs from "qs";
 import { withRouter, Link } from "react-router-dom";
 import { inject, Observer } from "mobx-react";
+import axios from "axios";
 
 @Observer
 @withRouter
@@ -23,6 +23,8 @@ class Header extends Component {
     activeItem: "home",
     visible: false,
     mail: "",
+    username: "" /*추가*/,
+    nickname: "" /*추가*/,
   };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -60,13 +62,54 @@ class Header extends Component {
     });
   };
 
+  enhanceAccessToeken = () => {
+    const { accessToken } = localStorage;
+    if (accessToken) {
+      axios.defaults.headers.common["Authorization"] = `JWT ${accessToken}`;
+      return true;
+    } else return false;
+  };
+
+  componentDidMount() {
+    if (this.enhanceAccessToeken()) {
+      const url = "api/users/info";
+      axios
+        .get(url)
+        .then((res) => {
+          console.log(res.data);
+          this.setState({ username: res.data.username });
+          this.setState({ nickname: res.data.nickname });
+        })
+        .catch(function (error) {
+          if (error.response) {
+            const err = {
+              header: error.response.headers,
+              code: error.response.status,
+              mssage: error.response.data,
+            };
+            console.log(err);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("Error", error.message);
+          }
+        });
+    }
+  }
+
+  logout = () => {
+    localStorage.removeItem("accessToken");
+    document.location.href = "/";
+  };
+
   render() {
+    const { username } = this.state;
     const urlParams = qs.parse(this.props.location.search, {
       ignoreQueryPrefix: true,
     });
     const trigger = (
       <span>
-        <Icon name="user" /> Hello, {urlParams.user}
+        <Icon name="user" /> Hello, {username}
       </span>
     );
 
@@ -84,7 +127,7 @@ class Header extends Component {
       { key: "myTodoList", text: "내 할일 보기", href: "/my/TodoList" },
       { key: "myGroup", text: "내 그룹 보기", href: "/my/Group" },
       { key: "settings", text: "설정", href: "/my/settings" },
-      { key: "log-out", text: "로그아웃", href: "/my/logout" },
+      // { key: "log-out", text: "로그아웃", href: "/my/logout" },
     ];
 
     return (
@@ -98,26 +141,35 @@ class Header extends Component {
         <Menu size="large" inverted secondary>
           <Menu.Menu position="left" style={{ display: 0 - 20 }}>
             <Image
-              src="./logo/logo.png"
+              src="../../logo/logo.png"
               size="tiny"
               style={{ marin: "5px", marginLeft: "80px" }}
-              as={Link}
-              to="/"
+              href="/"
             />
           </Menu.Menu>
-          {urlParams.tag ? (
+          {/* {urlParams.tag ? ( */}
+          {localStorage.accessToken ? (
             <Menu.Menu position="right" style={{ display: 0 - 20 }}>
               <Menu.Item>
                 <Dropdown trigger={trigger} options={options} />
               </Menu.Item>
               <Menu.Item
-                style={{ margin: "0 100px 0 0" }}
+                // style={{ margin: "0 100px 0 0" }}
                 onClick={() => this.mail()}
               >
                 <Icon name="mail" /> Messages
                 <Label color="red" floating>
                   5
                 </Label>
+              </Menu.Item>
+              <Menu.Item>
+                <div
+                  onClick={() => {
+                    this.logout();
+                  }}
+                >
+                  로그아웃
+                </div>
               </Menu.Item>
             </Menu.Menu>
           ) : (
