@@ -3,7 +3,7 @@ import { Container } from "semantic-ui-react";
 import MyProfileContainer from "./MyProfileContainer";
 import MyGroupContainer from "./MyGroupContainer";
 import MyTodoListContainer from "./MyTodoListContainer";
-import Calender from "../view/Calender";
+import MyCalendar from "../view/MyCalendar";
 class MyPageResultContainer extends Component {
   render() {
     const menu = this.props.menu;
@@ -14,7 +14,7 @@ class MyPageResultContainer extends Component {
         {menu === "profile" ? <MyProfileContainer /> : ""}
         {menu === "group" ? <MyGroupContainer /> : ""}
         {menu === "todoList" ? <MyTodoListContainer /> : ""}
-        {menu === "calender" ? <Calender /> : ""}
+        {menu === "myCalendar" ? <MyCalendar /> : ""}
       </div>
     );
   }
