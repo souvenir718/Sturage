@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  Segment,
   Menu,
   Dropdown,
   Image,
