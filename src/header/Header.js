@@ -141,7 +141,7 @@ class Header extends Component {
         <Menu size="large" inverted secondary>
           <Menu.Menu position="left" style={{ display: 0 - 20 }}>
             <Image
-              src="./logo/logo.png"
+              src="../../logo/logo.png"
               size="tiny"
               style={{ marin: "5px", marginLeft: "80px" }}
               href="/"
