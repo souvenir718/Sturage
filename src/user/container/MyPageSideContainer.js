@@ -42,6 +42,14 @@ class MyPageSideContainer extends Component {
             to="/my/todoList"
             content="내 할일 보기"
           />
+          <Menu.Item
+            name="myCalendar"
+            active={activeItem === "myCalendar"}
+            onClick={this.handleItemClick}
+            as={Link}
+            to="/my/myCalendar"
+            content="달력"
+          />
         </Menu>
       </div>
     );
