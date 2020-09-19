@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./GroupInfoPage.scss";
 import { Grid, Image, Header, Button } from "semantic-ui-react";
 class GroupDetailPage extends Component {
+  componentDidMount = () => {};
+
   render() {
     return (
       <Grid className="infopage-contianer">
