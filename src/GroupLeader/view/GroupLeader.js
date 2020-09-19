@@ -90,40 +90,39 @@ class GroupLeader extends Component {
         {data.isTodo && (
           <div className="todos">
             <div className="todo-manage">
-              <span>Todo : </span>
+              <span className="todo-manage-title">Todo : </span>
               <Input onChange={(e) => this.props.changeTodo(e)} />
               <Icon
                 name="plus square"
                 onClick={() => this.props.addTodo(data.id, this.state.tsodo)}
               />
-              <>
-                <DatePicker
-                  selected={this.state.endDate}
-                  onChange={this.endDateChange}
-                  selectsEnd
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  minDate={this.state.startDate}
-                  customInput={<CustomInput />}
-                />
-                <DatePicker
-                  selected={this.state.startDate}
-                  onChange={this.startDateChange}
-                  selectsStart
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  customInput={<CustomInput />}
-                />
-              </>
+              <div className="todo-manage-date">
+                <span>
+                  <DatePicker
+                    selected={this.state.startDate}
+                    onChange={this.startDateChange}
+                    selectsStart
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    customInput={<CustomInput />}
+                  />
+                </span>
+                <span>
+                  <DatePicker
+                    selected={this.state.endDate}
+                    onChange={this.endDateChange}
+                    selectsEnd
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    minDate={this.state.startDate}
+                    customInput={<CustomInput />}
+                  />
+                </span>
+              </div>
             </div>
             {data.todoList.map((todo) => (
               <div className="todo" key={todo.id}>
-                <p>{todo.title}</p>
-                <div className="todo-users">
-                  {todo.userList.map((data, idx) => (
-                    <Label key={idx}>{data}</Label>
-                  ))}
-                </div>
+                <span className="todo-title">{todo.title}</span>
                 <Icon
                   onClick={() => {
                     this.props.addUser(data.id, todo.id);
@@ -131,6 +130,12 @@ class GroupLeader extends Component {
                   className="user-plus"
                   name="plus square"
                 />
+                <div className="todo-users">
+                  {todo.userList.map((data, idx) => (
+                    <Label key={idx}>{data}</Label>
+                  ))}
+                </div>
+
                 <Dropdown
                   placeholder="Users"
                   fluid
@@ -138,6 +143,7 @@ class GroupLeader extends Component {
                   selection
                   options={users}
                   onChange={this.props.changeUser}
+                  className="users-dropdown"
                 />
               </div>
             ))}
