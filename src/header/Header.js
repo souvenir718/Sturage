@@ -12,20 +12,20 @@ import {
 import MailContainer from "../user/container/MailContainer";
 import qs from "qs";
 import { withRouter, Link } from "react-router-dom";
-import { inject, Observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import axios from "axios";
 
-@Observer
 @withRouter
 @inject("Store")
+@observer
 class Header extends Component {
   state = {
     activeItem: "home",
     visible: false,
     mail: "",
-    username: "" /*추가*/,
-    nickname: "" /*추가*/,
   };
+
+  // user = this.props.Store.user;
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   setVisible = () => {
@@ -71,29 +71,9 @@ class Header extends Component {
   };
 
   componentDidMount() {
+    console.log("componentDidMount");
     if (this.enhanceAccessToeken()) {
-      const url = "api/users/info";
-      axios
-        .get(url)
-        .then((res) => {
-          console.log(res.data);
-          this.setState({ username: res.data.username });
-          this.setState({ nickname: res.data.nickname });
-        })
-        .catch(function (error) {
-          if (error.response) {
-            const err = {
-              header: error.response.headers,
-              code: error.response.status,
-              mssage: error.response.data,
-            };
-            console.log(err);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("Error", error.message);
-          }
-        });
+      this.props.Store.user.loadAPiUserData();
     }
   }
 
@@ -103,10 +83,11 @@ class Header extends Component {
   };
 
   render() {
-    const { username } = this.state;
-    const urlParams = qs.parse(this.props.location.search, {
-      ignoreQueryPrefix: true,
-    });
+    // const urlParams = qs.parse(this.props.location.search, {
+    //   ignoreQueryPrefix: true,
+    // });
+    console.log("Render");
+    const username = this.props.Store.user.getUserName;
     const trigger = (
       <span>
         <Icon name="user" /> Hello, {username}
@@ -118,7 +99,7 @@ class Header extends Component {
         key: "user",
         text: (
           <span>
-            <strong>{urlParams.user}</strong>'s page
+            <strong>{username}</strong>'s page
           </span>
         ),
         disabled: true,
