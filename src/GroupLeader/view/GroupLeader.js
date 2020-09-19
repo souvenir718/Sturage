@@ -11,6 +11,9 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const users = [
   { key: "subin", text: "Subin", value: "subin" },
   { key: "subin1", text: "Subin1", value: "subin1" },
@@ -39,16 +42,27 @@ const groups = [
   },
 ];
 
+const CustomInput = ({ value, onClick }) => (
+  <Button className="custom-input" onClick={onClick}>
+    {value}
+  </Button>
+);
+
 class GroupLeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isAdd: false,
-      isGroup: false,
+      startDate: new Date(),
     };
 
     this.numOfSubject = this.props.subjectData.length;
   }
+  handleChange = (date) => {
+    this.setState({
+      startDate: date,
+    });
+  };
   getList = () => {
     let dataList = this.props.subjectData;
     let subjectList = dataList.map((data) => (
@@ -74,7 +88,19 @@ class GroupLeader extends Component {
               <Input onChange={(e) => this.props.changeTodo(e)} />
               <Icon
                 name="plus square"
-                onClick={() => this.props.addTodo(data.id, this.state.todo)}
+                onClick={() => this.props.addTodo(data.id, this.state.tsodo)}
+              />
+              <DatePicker
+                className="start-date"
+                selected={this.state.startDate}
+                onChange={this.handleChange}
+                customInput={<CustomInput />}
+              />
+              <DatePicker
+                className="start-date"
+                selected={this.state.startDate}
+                onChange={this.handleChange}
+                customInput={<CustomInput />}
               />
             </div>
             {data.todoList.map((todo) => (
@@ -136,51 +162,9 @@ class GroupLeader extends Component {
     let subjectList = this.getList();
     return (
       <>
-        {/* <div className="leader-sidebar">
-          <div className="sidebar-content">
-            <div className="sidebar-group">
-              <Header>
-               
-                <Icon name="angle down" onClick={this.showGroup} />
-              </Header>
-              {this.state.isGroup && (
-                <ul className="group-li">
-                  <li>subject</li>
-                  <li>user</li>
-                </ul>
-              )}
-            </div>
-          </div>
-          <div className="sidebar-content">
-            <div className="sidebar-group">
-              <Header onClick={this.showGroup}>
-                B Group <Icon name="angle down" />
-              </Header>
-              {this.state.isGroup && (
-                <ul className="group-li">
-                  <li>subject</li>
-                  <li>user</li>
-                </ul>
-              )}
-            </div>
-          </div>
-          <div className="sidebar-content">
-            <div className="sidebar-group">
-              <Header onClick={this.showGroup}>
-                C Group <Icon name="angle down" />
-              </Header>
-              {this.state.isGroup && (
-                <ul className="group-li">
-                  <li>subject</li>
-                  <li>user</li>
-                </ul>
-              )}
-            </div>
-          </div>
-        </div> */}
         <Grid className="leader-container">
           <Grid.Row centered>
-            <Grid.Column width={8} className="leader-header">
+            <Grid.Column width={12} className="leader-header">
               <Header as="h1">
                 <span>
                   <Dropdown
@@ -203,7 +187,7 @@ class GroupLeader extends Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row centered className="leader-contents">
-            <Grid.Column width={8}>{subjectList}</Grid.Column>
+            <Grid.Column width={12}>{subjectList}</Grid.Column>
           </Grid.Row>
         </Grid>
       </>
