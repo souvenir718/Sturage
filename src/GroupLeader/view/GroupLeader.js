@@ -54,13 +54,19 @@ class GroupLeader extends Component {
     this.state = {
       isAdd: false,
       startDate: new Date(),
+      endDate: new Date(),
     };
 
     this.numOfSubject = this.props.subjectData.length;
   }
-  handleChange = (date) => {
+  startDateChange = (date) => {
     this.setState({
       startDate: date,
+    });
+  };
+  endDateChange = (date) => {
+    this.setState({
+      endDate: date,
     });
   };
   getList = () => {
@@ -90,18 +96,25 @@ class GroupLeader extends Component {
                 name="plus square"
                 onClick={() => this.props.addTodo(data.id, this.state.tsodo)}
               />
-              <DatePicker
-                className="start-date"
-                selected={this.state.startDate}
-                onChange={this.handleChange}
-                customInput={<CustomInput />}
-              />
-              <DatePicker
-                className="start-date"
-                selected={this.state.startDate}
-                onChange={this.handleChange}
-                customInput={<CustomInput />}
-              />
+              <>
+                <DatePicker
+                  selected={this.state.endDate}
+                  onChange={this.endDateChange}
+                  selectsEnd
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  minDate={this.state.startDate}
+                  customInput={<CustomInput />}
+                />
+                <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.startDateChange}
+                  selectsStart
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  customInput={<CustomInput />}
+                />
+              </>
             </div>
             {data.todoList.map((todo) => (
               <div className="todo" key={todo.id}>
