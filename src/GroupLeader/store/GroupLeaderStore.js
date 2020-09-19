@@ -10,6 +10,8 @@ export default class GroupLeaderStore {
   @observable userList = [];
   @observable tmpTodo = "";
   @observable tmpTitle = "";
+  @observable startDate = new Date();
+  @observable endDate = new Date();
 
   @computed
   get getSubjectData() {
@@ -104,6 +106,16 @@ export default class GroupLeaderStore {
   @action
   changeTitle(newTitle) {
     this.tmpTitle = newTitle;
+  }
+
+  @action
+  changeStartDate(newStartDate) {
+    this.startDate = newStartDate;
+  }
+
+  @action
+  changeEndDate(newEndDate) {
+    this.endDate = newEndDate;
   }
 
   //groupuser

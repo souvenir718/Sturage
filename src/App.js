@@ -2,10 +2,11 @@ import React from "react";
 
 import MainPage from "./main/MainPage";
 import GroupInfoPage from "./groupInfo/GroupInfoPage";
+import GroupDetailPage from "./groupDetail/GroupDetailPage";
+import GroupDetailConverter from "./groupDetail/GroupDetailConverter";
 import Header from "./header/Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./footer/Footer";
-import GroupDetailPage from "./groupDetail/GroupDetailPage";
 import AddGroup from "./user/view/AddGroup";
 import SignUpPage from "./user/view/SignUp";
 import myContainer from "./user/container/MyContainer";
@@ -23,7 +24,11 @@ function App() {
           <Route path="/signUp" component={SignUpPage} exact={true} />
           <Route path="/list" component={GroupListContainer} exact={true} />
           <Route path="/info" component={GroupInfoPage} exact={true} />
-          <Route path="/detail/:id" component={GroupDetailPage} exact />
+          <Route
+            path="/detail/:id"
+            component={GroupDetailConverter}
+            exact={true}
+          />
           <Route path="/addGroup" component={AddGroup} exact={true} />
           <Route path="/my/:menu" component={myContainer} exact={true} />
           <Route path="/leader" component={GroupLeaderContainer} exact={true} />
