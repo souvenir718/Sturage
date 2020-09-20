@@ -15,6 +15,11 @@ export default class UserStore {
   @observable userTodos;
 
   @computed
+  get loginConfirm() {
+    return this.loginAt;
+  }
+
+  @computed
   get getUserName() {
     console.log("get store username오나요?", this.username);
     return this.username ? this.username : null;

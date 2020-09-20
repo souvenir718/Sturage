@@ -20,7 +20,8 @@ class GroupDetailConverter extends Component {
   }
 
   render() {
-    const { detail } = this.props;
+    const { user, detail } = this.props;
+
     const test = detail.getGroupSubjects.length < 0 ? "test" : <GroupDetail />;
 
     return test;
