@@ -61,11 +61,11 @@ class SignUp extends Component {
   };
 
   render() {
-    const options = [
-      { key: "m", text: "Male", value: "male" },
-      { key: "f", text: "Female", value: "female" },
-      { key: "o", text: "Other", value: "other" },
-    ];
+    // const options = [
+    //   { key: "m", text: "Male", value: "male" },
+    //   { key: "f", text: "Female", value: "female" },
+    //   { key: "o", text: "Other", value: "other" },
+    // ];
     return (
       <Container>
         <h2 style={{ margin: "80px 200px 0 200px" }}>

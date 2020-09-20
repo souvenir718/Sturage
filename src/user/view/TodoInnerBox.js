@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Button, Card, Label } from "semantic-ui-react";
+import { Icon, Button, Card } from "semantic-ui-react";
 import { inject, observer } from "mobx-react";
 import ModalProgress from "./ModalProgress";
 
@@ -21,7 +21,7 @@ class TodoInnerBox extends Component {
     const sys = new Date().getTime();
     const due = new Date(dueDate).getTime();
     let cnt = sys - due;
-    cnt = Math.abs(Math.ceil((cnt / (60 * 60 * 1000 *24))));
+    cnt = Math.abs(Math.ceil(cnt / (60 * 60 * 1000 * 24)));
 
     console.log("------>>>" + cnt);
 

@@ -5,23 +5,38 @@ export default class GroupStore {
 
   @observable groupSubjects = [];
 
+  @observable groupMembers = [];
+
+  @observable groupAttends = [];
+
   @computed
   get getGroupInfo() {
-    return { ...this.groupInfo };
+    return this.groupInfo ? { ...this.groupInfo } : {};
   }
 
   @computed
   get getGroupSubjects() {
-    return this.groupSubjects ? this.groupSubjects.slice("") : [];
+    return this.groupSubjects
+      ? this.groupSubjects.slice("").map((subject) => {
+          return { ...subject };
+        })
+      : [];
   }
 
   @action
-  setGroupInfo(groupInfo) {
-    this.groupInfo = groupInfo;
+  setGroupSubjects(groupDataApi) {
+    this.groupSubjects = groupDataApi;
   }
 
   @action
-  setGroupSubjects(groupInfo) {
-    this.groupInfo = groupInfo;
+  setGroupInfo(groupObj) {
+    this.groupSubjects = groupObj.subjectList;
+    this.groupMembers = groupObj.members;
+    this.groupAttends = groupObj.attends;
+
+    delete groupObj.subjectList;
+    delete groupObj.members;
+    delete groupObj.attends;
+    this.groupInfo = groupObj;
   }
 }

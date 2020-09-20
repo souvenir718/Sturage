@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Container, Button, Card } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 import GroupInner from "../view/GroupInner";
 import data from "../data/data2";
 class MyGroupContainer extends Component {

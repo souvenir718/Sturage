@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import data from "../data/todoData";
+// import data from "../data/todoData";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 class MyCalendar extends Component {
   render() {
     moment.locale("en-GB");
-    const localizer=momentLocalizer(moment);
+    const localizer = momentLocalizer(moment);
     const myEventsList = [
       {
         title: "리액트하기",
@@ -16,7 +16,7 @@ class MyCalendar extends Component {
       },
       {
         title: "스프링하기",
-        color:"red",
+        color: "red",
         allDay: false,
         start: new Date(2020, 9, 6, 10, 0),
         end: new Date(2020, 9, 13, 9, 0),

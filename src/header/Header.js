@@ -10,7 +10,6 @@ import {
   CardContent,
 } from "semantic-ui-react";
 import MailContainer from "../user/container/MailContainer";
-import qs from "qs";
 import { withRouter, Link } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import axios from "axios";

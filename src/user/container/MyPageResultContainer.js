@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container } from "semantic-ui-react";
 import MyProfileContainer from "./MyProfileContainer";
 import MyGroupContainer from "./MyGroupContainer";
 import MyTodoListContainer from "./MyTodoListContainer";

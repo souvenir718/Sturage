@@ -1,8 +1,6 @@
 import React from "react";
 
 import MainPage from "./main/MainPage";
-import GroupInfoPage from "./groupInfo/GroupInfoPage";
-import GroupDetailPage from "./groupDetail/GroupDetailPage";
 import GroupDetailConverter from "./groupDetail/GroupDetailConverter";
 import Header from "./header/Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -23,7 +21,6 @@ function App() {
           <Route path="/" component={MainPage} exact={true} />
           <Route path="/signUp" component={SignUpPage} exact={true} />
           <Route path="/list" component={GroupListContainer} exact={true} />
-          <Route path="/info" component={GroupInfoPage} exact={true} />
           <Route
             path="/detail/:id"
             component={GroupDetailConverter}

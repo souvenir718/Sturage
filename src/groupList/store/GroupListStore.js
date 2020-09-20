@@ -1,4 +1,4 @@
-import { observable, computed, action, get } from "mobx";
+import { observable, computed, action } from "mobx";
 import categoryData from "../data/categoryData.js";
 // import groupData from "../data/groupData";
 export default class GroupListStore {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button, Card, Dropdown } from "semantic-ui-react";
+import { Modal, Button, Dropdown } from "semantic-ui-react";
 import { inject, observer } from "mobx-react";
 
 @inject("Store")

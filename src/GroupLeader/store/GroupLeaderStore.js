@@ -1,4 +1,4 @@
-import { observable, computed, action, isArrayLike } from "mobx";
+import { observable, computed, action } from "mobx";
 import subjectData from "../data/subjectData";
 import attends from "../data/attends";
 
