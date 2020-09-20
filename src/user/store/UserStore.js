@@ -5,6 +5,9 @@ export default class UserStore {
   @observable username = "";
   @observable nickname;
 
+  //로그인 상태체크
+  @observable loginAt = false;
+
   @observable open;
   @observable dimmer;
   @observable progress;
@@ -42,30 +45,11 @@ export default class UserStore {
   @action
   loadAPiUserData() {
     const url = "api/users/info";
-    axios
-      .get(url)
-      .then((res) => {
-        console.log(res.data);
-
-        this.username = res.data.username;
-        this.nickname = res.data.nickname;
-
-        console.log(this.username);
-      })
-      .catch(function (error) {
-        if (error.response) {
-          const err = {
-            header: error.response.headers,
-            code: error.response.status,
-            mssage: error.response.data,
-          };
-          console.log(err);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-      });
+    axios.get(url).then((res) => {
+      this.username = res.data.username;
+      this.nickname = res.data.nickname;
+      this.loginAt = true;
+    });
   }
 
   @action

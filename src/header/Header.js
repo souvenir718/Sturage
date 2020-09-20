@@ -70,7 +70,6 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    console.log("componentDidMount");
     if (this.enhanceAccessToeken()) {
       this.props.Store.user.loadAPiUserData();
     }
