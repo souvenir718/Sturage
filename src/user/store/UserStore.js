@@ -2,14 +2,27 @@ import { observable, computed, action } from "mobx";
 import axios from "axios";
 
 export default class UserStore {
+  //기본 유저 정보
+  @observable id = "";
   @observable username = "";
-  @observable nickname;
+  @observable nickname = "";
+  @observable email = "";
+  @observable introduce = "";
+  @observable attendGroups = [];
+
+  //로그인 상태체크
+  @observable loginAt = false;
 
   @observable open;
   @observable dimmer;
   @observable progress;
   @observable todo_id;
   @observable userTodos;
+
+  @computed
+  get loginConfirm() {
+    return this.loginAt;
+  }
 
   @computed
   get getUserName() {
@@ -20,6 +33,18 @@ export default class UserStore {
   get getNickName() {
     console.log("get store nci오나요?", this.nickname);
     return this.nickname ? this.nickname : null;
+  }
+
+  @computed
+  get getAttendGroups() {
+    // 참여중인 그룹리스트 가져오기
+    console.log("test");
+    console.log(this.attendGroups);
+    return this.attendGroups
+      ? this.attendGroups.map((group) => {
+          return { ...group };
+        })
+      : [];
   }
 
   @computed
@@ -41,31 +66,16 @@ export default class UserStore {
 
   @action
   loadAPiUserData() {
-    const url = "api/users/info";
-    axios
-      .get(url)
-      .then((res) => {
-        console.log(res.data);
-
-        this.username = res.data.username;
-        this.nickname = res.data.nickname;
-
-        console.log(this.username);
-      })
-      .catch(function (error) {
-        if (error.response) {
-          const err = {
-            header: error.response.headers,
-            code: error.response.status,
-            mssage: error.response.data,
-          };
-          console.log(err);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-      });
+    const url = "/api/users/info";
+    axios.get(url).then((res) => {
+      this.id = res.data.username;
+      this.username = res.data.username;
+      this.nickname = res.data.nickname;
+      this.email = res.data.email;
+      this.introduce = res.data.introduce;
+      this.attendGroups = res.data.attendGroups;
+      this.loginAt = true;
+    });
   }
 
   @action

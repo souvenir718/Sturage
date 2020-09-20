@@ -11,7 +11,6 @@ class GroupListContainer extends Component {
     axios
       .get(api)
       .then((res) => {
-        console.log(res.data);
         this.props.Store.list.setGroupData(res.data);
       })
       .catch(function (error) {
@@ -34,7 +33,7 @@ class GroupListContainer extends Component {
   render() {
     let groupData = this.props.Store.list.getGroupData;
     let categoryData = this.props.Store.list.getCategoryData;
-
+    console.log(groupData);
     return (
       <>
         {groupData.length !== 0 ? (
