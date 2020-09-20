@@ -4,7 +4,6 @@ import "./GroupDetailPage.scss";
 import Todo from "./Todo";
 import Sidebar from "./Sidebar";
 import { inject, observer } from "mobx-react";
-import axios from "axios";
 
 @inject("Store")
 @observer
