@@ -2,8 +2,13 @@ import { observable, computed, action } from "mobx";
 import axios from "axios";
 
 export default class UserStore {
+  //기본 유저 정보
+  @observable id = "";
   @observable username = "";
-  @observable nickname;
+  @observable nickname = "";
+  @observable email = "";
+  @observable introduce = "";
+  @observable attendGroups = [];
 
   //로그인 상태체크
   @observable loginAt = false;
@@ -31,6 +36,18 @@ export default class UserStore {
   }
 
   @computed
+  get getAttendGroups() {
+    // 참여중인 그룹리스트 가져오기
+    console.log("test");
+    console.log(this.attendGroups);
+    return this.attendGroups
+      ? this.attendGroups.map((group) => {
+          return { ...group };
+        })
+      : [];
+  }
+
+  @computed
   get getOpen() {
     return this.open ? this.open : false;
   }
@@ -49,10 +66,14 @@ export default class UserStore {
 
   @action
   loadAPiUserData() {
-    const url = "api/users/info";
+    const url = "/api/users/info";
     axios.get(url).then((res) => {
+      this.id = res.data.username;
       this.username = res.data.username;
       this.nickname = res.data.nickname;
+      this.email = res.data.email;
+      this.introduce = res.data.introduce;
+      this.attendGroups = res.data.attendGroups;
       this.loginAt = true;
     });
   }

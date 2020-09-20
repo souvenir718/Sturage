@@ -21,10 +21,15 @@ class GroupDetailConverter extends Component {
 
   render() {
     const { user, detail } = this.props;
+    const attendGroups = user.getAttendGroups;
+    const groupId = detail.groupInfo.id;
 
-    const test = detail.getGroupSubjects.length < 0 ? "test" : <GroupDetail />;
-
-    return test;
+    if (user.loginConfirm) {
+      if (attendGroups.find((group) => group.id === groupId)) {
+        return <GroupDetail />;
+      }
+    }
+    return <GroupInfoPage />;
   }
 }
 

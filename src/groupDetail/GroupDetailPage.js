@@ -6,9 +6,7 @@ import Sidebar from "./Sidebar";
 import { inject, observer } from "mobx-react";
 import axios from "axios";
 
-@inject((stores) => ({
-  detail: stores.Store.detail,
-}))
+@inject("Store")
 @observer
 class GroupDetailPage extends Component {
   constructor(props) {
@@ -61,7 +59,7 @@ class GroupDetailPage extends Component {
   // };
 
   render() {
-    const { detail } = this.props;
+    const { detail } = this.props.Store;
     const group = detail.getGroupInfo;
     const subjects = detail.getGroupSubjects;
 
