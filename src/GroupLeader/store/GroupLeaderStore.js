@@ -1,6 +1,7 @@
 import { observable, computed, action } from "mobx";
 import subjectData from "../data/subjectData";
 import attends from "../data/attends";
+import moment from "moment";
 
 export default class GroupLeaderStore {
   @observable subjectData = subjectData;
@@ -12,6 +13,16 @@ export default class GroupLeaderStore {
   @observable tmpTitle = "";
   @observable startDate = new Date();
   @observable endDate = new Date();
+
+  @computed
+  get getStartDate() {
+    return this.startDate;
+  }
+
+  @computed
+  get getEndDate() {
+    return this.endDate;
+  }
 
   @computed
   get getSubjectData() {
@@ -68,6 +79,8 @@ export default class GroupLeaderStore {
       id: newTodoList.length,
       title: this.tmpTodo,
       userList: [],
+      startDate: moment(this.startDate).format("YYYY-MM-DD"),
+      endDate: moment(this.endDate).format("YYYY-MM-DD"),
     };
     newTodoList.push(newTodo);
     let newSubjectList = this.subjectData.map((data) =>
@@ -75,11 +88,14 @@ export default class GroupLeaderStore {
     );
     this.tmpTodo = "";
     this.subjectData = newSubjectList;
+    this.startDate = new Date();
+    this.endDate = new Date();
   }
 
   @action
   addUser(dataId, todoId) {
     let subject = this.subjectData.find((data) => data.id === dataId);
+
     let todoList = subject.todoList;
     let newTodoList = todoList.map((todo) =>
       todo.id === todoId ? { ...todo, userList: this.userList } : todo

@@ -64,6 +64,12 @@ const attends = [
     name: "문소",
     isMember: false,
   },
+
+  {
+    id: 13,
+    name: "김경주",
+    isMember: false,
+  },
 ];
 
 export default attends;
