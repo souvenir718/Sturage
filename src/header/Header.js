@@ -112,7 +112,7 @@ class Header extends Component {
     return (
       <div
         style={{
-          backgroundColor: "#8e44ad",
+          backgroundColor: " rgb(142, 68, 173)",
           padding: "10px",
           boxSizing: "border-box",
         }}

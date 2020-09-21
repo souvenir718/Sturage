@@ -86,6 +86,8 @@ class Main extends Component {
                 basic
                 color="violet"
                 content="Enter to Groups"
+                as={Link}
+                to="/list"
               />
             </div>
           </Grid.Column>
@@ -130,6 +132,8 @@ class Main extends Component {
                   fontSize: "30px",
                   float: "left",
                 }}
+                as={Link}
+                to="/AddGroup"
                 inverte
                 content="Add to Groups"
               />
