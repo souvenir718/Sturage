@@ -13,6 +13,7 @@ export default class UserStore {
   //로그인 상태체크
   @observable loginAt = false;
 
+  //modal
   @observable open;
   @observable dimmer;
   @observable progress;
@@ -130,4 +131,7 @@ export default class UserStore {
       console.log("Error", error.message);
     }
   };
+
+ 
+
 }
