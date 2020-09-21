@@ -14,39 +14,12 @@ class Main extends Component {
       fontFamily: "Cute Font', cursive",
     };
     return (
-      // <Segment placeholder style={{ margin: "100px 100px", height: "450px" }}>
-      //   <Grid columns={2}>
-      //     <Grid.Column>
-      //       <Button
-      //         content="스터디그룹 둘러보기"
-      //         icon="search plus"
-      //         size="huge"
-      //         style={mainBox}
-      //         as={Link}
-      //         to="/list"
-      //       ></Button>
-      //     </Grid.Column>
-
-      //     <Grid.Column verticalAlign="middle">
-      //       <Button
-      //         content="스터디그룹 만들기"
-      //         icon="plus circle"
-      //         size="huge"
-      //         style={mainBox}
-      //         as={Link}
-      //         to="/AddGroup"
-      //       />
-      //     </Grid.Column>
-      //   </Grid>
-
-      //   <Divider vertical>OR</Divider>
-      // </Segment>
       <Grid columns="two">
         <Grid.Row style={{ height: "100vh" }}>
           <Grid.Column
             style={{
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-end",
               alignItems: "center",
             }}
           >
@@ -60,42 +33,47 @@ class Main extends Component {
             >
               <div
                 style={{
-                  marginTop: "50px",
-                  marginRight: "70px",
-                  float: "right",
+                  marginTop: "40px",
+                  marginRight: "90px",
+                  textAlign: "right",
                 }}
               >
-                Would you like to
+                진행중인 STURAGE 그룹에
               </div>
               <div
                 style={{
-                  marginTop: "50px",
-                  marginRight: "70px",
-                  float: "right",
+                  marginTop: "70px",
+                  marginRight: "90px",
+                  textAlign: "right",
                 }}
               >
-                participate in Sturage?
+                참여하시겠습니까?
               </div>
-              <Button
+              <div
                 style={{
-                  marginTop: "70px",
-                  marginRight: "70px",
-                  fontSize: "30px",
-                  float: "right",
+                  textAlign: "right",
                 }}
-                basic
-                color="violet"
-                content="Enter to Groups"
-                as={Link}
-                to="/list"
-              />
+              >
+                <Button
+                  style={{
+                    marginTop: "70px",
+                    marginRight: "110px",
+                    fontSize: "30px",
+                  }}
+                  basic
+                  color="violet"
+                  content="Enter to Groups"
+                  as={Link}
+                  to="/list"
+                />
+              </div>
             </div>
           </Grid.Column>
           <Grid.Column
             style={{
               backgroundImage: "url(/Image/main_page2.jpg)",
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
             }}
           >
@@ -109,34 +87,35 @@ class Main extends Component {
             >
               <div
                 style={{
-                  marginTop: "50px",
-                  marginLeft: "70px",
-                  float: "left",
+                  marginTop: "40px",
+                  marginLeft: "90px",
                 }}
               >
-                Would you like to
+                진행 할 STURAGE 그룹을
               </div>
               <div
                 style={{
-                  marginTop: "50px",
-                  marginLeft: "70px",
-                  float: "left",
+                  marginTop: "70px",
+                  marginLeft: "90px",
                 }}
               >
-                participate in Sturage?
+                생성하시겠습니까?
               </div>
-              <Button
-                style={{
-                  marginTop: "70px",
-                  marginLeft: "70px",
-                  fontSize: "30px",
-                  float: "left",
-                }}
-                as={Link}
-                to="/AddGroup"
-                inverte
-                content="Add to Groups"
-              />
+              <div style={{ textAlign: "left" }}>
+                <Button
+                  style={{
+                    marginTop: "70px",
+                    marginLeft: "110px",
+                    fontSize: "30px",
+                  }}
+                  as={Link}
+                  to="/AddGroup"
+                  color="white"
+                  basic
+                  inverted
+                  content="Add to Groups"
+                />
+              </div>
             </div>
           </Grid.Column>
         </Grid.Row>
