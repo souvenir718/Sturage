@@ -11,3 +11,5 @@
 - @inject("Store")
 - @observer
 - 연결할 Store를 명시해주고 observer를 명시해줘서 감시상태 확인.
+
+#### selection e.target.innerText
