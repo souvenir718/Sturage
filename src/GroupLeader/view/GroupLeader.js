@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./GroupLeader.scss";
 import {
   Grid,
@@ -53,8 +53,6 @@ class GroupLeader extends Component {
     super(props);
     this.state = {
       isAdd: false,
-      startDate: new Date(),
-      endDate: new Date(),
     };
 
     this.numOfSubject = this.props.subjectData.length;
@@ -70,9 +68,8 @@ class GroupLeader extends Component {
     });
   };
   getList = () => {
-    let dataList = this.props.subjectData;
-    let subjectList = dataList.map((data) => (
-      <Fragment key={data.id}>
+    const subjectList = this.props.subjectData.map((data) => (
+      <div key={data.id}>
         <div className="leader-content">
           <p className="content-header">{data.times}. Times</p>
           <span
@@ -94,27 +91,29 @@ class GroupLeader extends Component {
               <Input onChange={(e) => this.props.changeTodo(e)} />
               <Icon
                 name="plus square"
-                onClick={() => this.props.addTodo(data.id, this.state.tsodo)}
+                onClick={() => this.props.addTodo(data.id)}
               />
               <div className="todo-manage-date">
                 <span>
                   <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.startDateChange}
+                    selected={this.props.startDate}
+                    onChange={this.props.changeStartDate}
                     selectsStart
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
+                    startDate={this.props.startDate}
+                    endDate={this.props.endDate}
+                    dateFormat="yyyy-MM-dd"
                     customInput={<CustomInput />}
                   />
                 </span>
                 <span>
                   <DatePicker
-                    selected={this.state.endDate}
-                    onChange={this.endDateChange}
+                    selected={this.props.endDate}
+                    onChange={this.props.changeEndDate}
                     selectsEnd
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    minDate={this.state.startDate}
+                    startDate={this.props.startDate}
+                    endDate={this.props.endDate}
+                    minDate={this.props.startDate}
+                    dateFormat="yyyy-MM-dd"
                     customInput={<CustomInput />}
                   />
                 </span>
@@ -130,12 +129,16 @@ class GroupLeader extends Component {
                   className="user-plus"
                   name="plus square"
                 />
+
                 <div className="todo-users">
                   {todo.userList.map((data, idx) => (
                     <Label key={idx}>{data}</Label>
                   ))}
                 </div>
-
+                <div className="todo-date">
+                  <Label color="blue">{todo.startDate}</Label>
+                  <Label color="green">{todo.endDate}</Label>
+                </div>
                 <Dropdown
                   placeholder="Users"
                   fluid
@@ -149,7 +152,7 @@ class GroupLeader extends Component {
             ))}
           </div>
         )}
-      </Fragment>
+      </div>
     ));
 
     return subjectList;
@@ -179,6 +182,7 @@ class GroupLeader extends Component {
 
   render() {
     let subjectList = this.getList();
+    console.log(new Date());
     return (
       <>
         <Grid className="leader-container">
