@@ -14,42 +14,133 @@ class Main extends Component {
       fontFamily: "Cute Font', cursive",
     };
     return (
-      <Segment placeholder style={{ margin: "100px 100px", height: "450px" }}>
-        <Grid columns={2}>
-          <Grid.Column>
-            <Button
-              content="스터디그룹 둘러보기"
-              icon="search plus"
-              size="huge"
-              style={mainBox}
-              as={Link}
-              to="/list"
-            ></Button>
-          </Grid.Column>
+      // <Segment placeholder style={{ margin: "100px 100px", height: "450px" }}>
+      //   <Grid columns={2}>
+      //     <Grid.Column>
+      //       <Button
+      //         content="스터디그룹 둘러보기"
+      //         icon="search plus"
+      //         size="huge"
+      //         style={mainBox}
+      //         as={Link}
+      //         to="/list"
+      //       ></Button>
+      //     </Grid.Column>
 
-          <Grid.Column verticalAlign="middle">
-            <Button
-              content="스터디그룹 만들기"
-              icon="plus circle"
-              size="huge"
-              style={mainBox}
-              as={Link}
-              to="/AddGroup"
-            />
-          </Grid.Column>
-        </Grid>
+      //     <Grid.Column verticalAlign="middle">
+      //       <Button
+      //         content="스터디그룹 만들기"
+      //         icon="plus circle"
+      //         size="huge"
+      //         style={mainBox}
+      //         as={Link}
+      //         to="/AddGroup"
+      //       />
+      //     </Grid.Column>
+      //   </Grid>
 
-        <Divider vertical>OR</Divider>
-      </Segment>
-      // <div>
-      //   <div style={mainBox}>
-      //     <Icon name="search plus"></Icon> 스터디그룹 둘러보기
-      //   </div>
-      //   <Divider vertical />
-      //   <div style={mainBox}>
-      //     <Icon name="plus circle"></Icon> 스터디그룹 만들기
-      //   </div>
-      // </div>
+      //   <Divider vertical>OR</Divider>
+      // </Segment>
+      <Grid columns="two">
+        <Grid.Row style={{ height: "100vh" }}>
+          <Grid.Column
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "50px",
+                marginTop: "-100px",
+                fontWeight: "bolder",
+                color: "#8e44ad",
+              }}
+            >
+              <div
+                style={{
+                  marginTop: "50px",
+                  marginRight: "70px",
+                  float: "right",
+                }}
+              >
+                Would you like to
+              </div>
+              <div
+                style={{
+                  marginTop: "50px",
+                  marginRight: "70px",
+                  float: "right",
+                }}
+              >
+                participate in Sturage?
+              </div>
+              <Button
+                style={{
+                  marginTop: "70px",
+                  marginRight: "70px",
+                  fontSize: "30px",
+                  float: "right",
+                }}
+                basic
+                color="violet"
+                content="Enter to Groups"
+                as={Link}
+                to="/list"
+              />
+            </div>
+          </Grid.Column>
+          <Grid.Column
+            style={{
+              backgroundImage: "url(/Image/main_page2.jpg)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "50px",
+                marginTop: "-100px",
+                fontWeight: "bolder",
+                color: "#ffffff",
+              }}
+            >
+              <div
+                style={{
+                  marginTop: "50px",
+                  marginLeft: "70px",
+                  float: "left",
+                }}
+              >
+                Would you like to
+              </div>
+              <div
+                style={{
+                  marginTop: "50px",
+                  marginLeft: "70px",
+                  float: "left",
+                }}
+              >
+                participate in Sturage?
+              </div>
+              <Button
+                style={{
+                  marginTop: "70px",
+                  marginLeft: "70px",
+                  fontSize: "30px",
+                  float: "left",
+                }}
+                as={Link}
+                to="/AddGroup"
+                inverte
+                content="Add to Groups"
+              />
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
