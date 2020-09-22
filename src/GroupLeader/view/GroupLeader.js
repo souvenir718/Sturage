@@ -183,16 +183,30 @@ class GroupLeader extends Component {
     }
   };
 
-  showGroup = () => {
-    let isGroup = this.state.isGroup;
-    this.setState({
-      isGroup: !isGroup,
-    });
+  getOptions = () => {
+    const { leaderData } = this.props;
+    let option = {
+      key: "",
+      value: "",
+      text: "",
+    };
+    let options = leaderData.map(
+      (data) =>
+        (option = {
+          key: data.id,
+          value: data.name,
+          text: data.name,
+        })
+    );
+    return options;
   };
 
+  changeOptions = (event, data) => {
+    console.log(data.value);
+  };
   render() {
-    let subjectList = this.getList();
-    console.log(new Date());
+    const subjectList = this.getList();
+    const option = this.getOptions();
     return (
       <>
         <Grid className="leader-container">
@@ -202,8 +216,9 @@ class GroupLeader extends Component {
                 <span>
                   <Dropdown
                     inline
-                    options={groups}
-                    defaultValue={groups[0].value}
+                    options={option}
+                    defaultValue={option[0].value}
+                    onChange={this.changeOptions}
                   />
                 </span>
               </Header>
