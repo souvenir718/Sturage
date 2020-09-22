@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Grid, Button, Segment, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
+// 딥딛딥 퍼플스 #000426
+// 오묘한 블루 #1C166B
+const mage_color = "#1C166B";
+
 class Main extends Component {
   render() {
     const mainBox = {
@@ -14,133 +18,114 @@ class Main extends Component {
       fontFamily: "Cute Font', cursive",
     };
     return (
-      // <Segment placeholder style={{ margin: "100px 100px", height: "450px" }}>
-      //   <Grid columns={2}>
-      //     <Grid.Column>
-      //       <Button
-      //         content="스터디그룹 둘러보기"
-      //         icon="search plus"
-      //         size="huge"
-      //         style={mainBox}
-      //         as={Link}
-      //         to="/list"
-      //       ></Button>
-      //     </Grid.Column>
-
-      //     <Grid.Column verticalAlign="middle">
-      //       <Button
-      //         content="스터디그룹 만들기"
-      //         icon="plus circle"
-      //         size="huge"
-      //         style={mainBox}
-      //         as={Link}
-      //         to="/AddGroup"
-      //       />
-      //     </Grid.Column>
-      //   </Grid>
-
-      //   <Divider vertical>OR</Divider>
-      // </Segment>
-      <Grid columns="two">
-        <Grid.Row style={{ height: "100vh" }}>
-          <Grid.Column
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div
+      <div>
+        <Grid columns="two">
+          <Grid.Row style={{ height: "100vh" }}>
+            <Grid.Column
               style={{
-                fontSize: "50px",
-                marginTop: "-100px",
-                fontWeight: "bolder",
-                color: "#8e44ad",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
               }}
             >
               <div
                 style={{
-                  marginTop: "50px",
-                  marginRight: "70px",
-                  float: "right",
+                  fontSize: "50px",
+                  marginTop: "-100px",
+                  fontWeight: "bolder",
+                  color: mage_color,
                 }}
               >
-                Would you like to
+                <div
+                  style={{
+                    marginTop: "40px",
+                    marginRight: "90px",
+                    textAlign: "right",
+                  }}
+                >
+                  진행중인 STURAGE 그룹에
+                </div>
+                <div
+                  style={{
+                    marginTop: "70px",
+                    marginRight: "90px",
+                    textAlign: "right",
+                  }}
+                >
+                  참여하시겠습니까?
+                </div>
+                <div
+                  style={{
+                    textAlign: "right",
+                  }}
+                >
+                  <Button
+                    style={{
+                      marginTop: "70px",
+                      marginRight: "110px",
+                      fontSize: "30px",
+                    }}
+                    basic
+                    color="violet"
+                    content="Enter to Groups"
+                    as={Link}
+                    to="/list"
+                  />
+                </div>
               </div>
-              <div
-                style={{
-                  marginTop: "50px",
-                  marginRight: "70px",
-                  float: "right",
-                }}
-              >
-                participate in Sturage?
-              </div>
-              <Button
-                style={{
-                  marginTop: "70px",
-                  marginRight: "70px",
-                  fontSize: "30px",
-                  float: "right",
-                }}
-                basic
-                color="violet"
-                content="Enter to Groups"
-                as={Link}
-                to="/list"
-              />
-            </div>
-          </Grid.Column>
-          <Grid.Column
-            style={{
-              backgroundImage: "url(/Image/main_page2.jpg)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div
+            </Grid.Column>
+            <Grid.Column
               style={{
-                fontSize: "50px",
-                marginTop: "-100px",
-                fontWeight: "bolder",
-                color: "#ffffff",
+                backgroundImage: "url(/Image/main_page2.jpg)",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
               }}
             >
               <div
                 style={{
-                  marginTop: "50px",
-                  marginLeft: "70px",
-                  float: "left",
+                  fontSize: "50px",
+                  marginTop: "-100px",
+                  fontWeight: "bolder",
+                  color: "#ffffff",
                 }}
               >
-                Would you like to
+                <div
+                  style={{
+                    marginTop: "40px",
+                    marginLeft: "90px",
+                  }}
+                >
+                  진행 할 STURAGE 그룹을
+                </div>
+                <div
+                  style={{
+                    marginTop: "70px",
+                    marginLeft: "90px",
+                  }}
+                >
+                  생성하시겠습니까?
+                </div>
+                <div style={{ textAlign: "left" }}>
+                  <Button
+                    style={{
+                      marginTop: "70px",
+                      marginLeft: "110px",
+                      fontSize: "30px",
+                    }}
+                    as={Link}
+                    to="/AddGroup"
+                    color="white"
+                    basic
+                    inverted
+                    content="Add to Groups"
+                  />
+                </div>
               </div>
-              <div
-                style={{
-                  marginTop: "50px",
-                  marginLeft: "70px",
-                  float: "left",
-                }}
-              >
-                participate in Sturage?
-              </div>
-              <Button
-                style={{
-                  marginTop: "70px",
-                  marginLeft: "70px",
-                  fontSize: "30px",
-                  float: "left",
-                }}
-                as={Link}
-                to="/AddGroup"
-                inverte
-                content="Add to Groups"
-              />
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     );
   }
 }

@@ -3,10 +3,13 @@ import subjectData from "../data/subjectData";
 import attends from "../data/attends";
 import leaderData from "../data/leaderData";
 import moment from "moment";
+import axios from "axios";
 
 export default class GroupLeaderStore {
+
   @observable leaderData = leaderData;
   @observable subjectData = subjectData;
+
   @observable attends = attends;
   @observable members = [];
 
@@ -20,6 +23,7 @@ export default class GroupLeaderStore {
   get getLeaderData() {
     return this.leaderData;
   }
+
   @computed
   get getStartDate() {
     return this.startDate;
@@ -41,6 +45,16 @@ export default class GroupLeaderStore {
   @computed
   get getMembers() {
     return this.members;
+  }
+
+  @action
+  setLeaderGroups() {
+    const url = "/api/leader/groups/";
+    axios.get(url).then((res) => {
+      console.log(res.data[0].subjectList);
+      this.leaderGroups = res.data;
+      this.subjectData = res.data[0].subjectList;
+    });
   }
 
   @action
@@ -70,7 +84,7 @@ export default class GroupLeaderStore {
   @action
   showTodo(id) {
     let subjectList = this.subjectData.map((data) =>
-      data.id === id ? { ...data, isTodo: !data.isTodo } : data
+      data.subject_id === id ? { ...data, isTodo: !data.isTodo } : data
     );
 
     this.subjectData = subjectList;

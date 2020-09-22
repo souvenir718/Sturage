@@ -24,7 +24,7 @@ class GroupInfoPage extends Component {
     const leader = { ...group.leader };
 
     return (
-      <Grid className="infopage-contianer">
+      <Grid className="infopage-contianer" style={{ height: "100vh" }}>
         <Grid.Row centered>
           <Grid.Column width={10} className="infopage-content">
             <Image
@@ -40,7 +40,12 @@ class GroupInfoPage extends Component {
         </Grid.Row>
         <Grid.Row centered>
           <Grid.Column width={6} className="infopage-button">
-            <Button className="btn-cancel">돌아가기</Button>{" "}
+            <Button
+              className="btn-cancel"
+              onClick={() => this.props.history.goBack()}
+            >
+              돌아가기
+            </Button>{" "}
             <Button
               className="btn-attend"
               onClick={() => {

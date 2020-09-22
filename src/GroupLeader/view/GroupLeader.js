@@ -10,6 +10,7 @@ import {
   Button,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { inject, observer } from "mobx-react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -48,6 +49,8 @@ const CustomInput = ({ value, onClick }) => (
   </Button>
 );
 
+@inject("Store")
+@observer
 class GroupLeader extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +60,13 @@ class GroupLeader extends Component {
 
     this.numOfSubject = this.props.subjectData.length;
   }
+
+  componentDidMount() {
+    console.log("test");
+    const { leader } = this.props.Store;
+    leader.setLeaderGroups();
+  }
+
   startDateChange = (date) => {
     this.setState({
       startDate: date,
@@ -69,19 +79,19 @@ class GroupLeader extends Component {
   };
   getList = () => {
     const subjectList = this.props.subjectData.map((data) => (
-      <div key={data.id}>
+      <div key={data.subject_id}>
         <div className="leader-content">
-          <p className="content-header">{data.times}. Times</p>
+          <p className="content-header">{data.time}. Times</p>
           <span
             className="content-title"
-            onClick={() => this.props.showTodo(data.id)}
+            onClick={() => this.props.showTodo(data.subject_id)}
           >
             {data.title}
           </span>
 
           <Icon
             name="minus square"
-            onClick={() => this.props.deleteSubject(data.id)}
+            onClick={() => this.props.deleteSubject(data.subject_id)}
           />
         </div>
         {data.isTodo && (
@@ -91,7 +101,7 @@ class GroupLeader extends Component {
               <Input onChange={(e) => this.props.changeTodo(e)} />
               <Icon
                 name="plus square"
-                onClick={() => this.props.addTodo(data.id)}
+                onClick={() => this.props.addTodo(data.subject_id)}
               />
               <div className="todo-manage-date">
                 <span>
@@ -119,25 +129,25 @@ class GroupLeader extends Component {
                 </span>
               </div>
             </div>
-            {data.todoList.map((todo) => (
-              <div className="todo" key={todo.id}>
+            {data.todoGroups.map((todo) => (
+              <div className="todo" key={todo.todoGroup_id}>
                 <span className="todo-title">{todo.title}</span>
                 <Icon
                   onClick={() => {
-                    this.props.addUser(data.id, todo.id);
+                    this.props.addUser(data.subject_id, todo.todoGroup_id);
                   }}
                   className="user-plus"
                   name="plus square"
                 />
 
                 <div className="todo-users">
-                  {todo.userList.map((data, idx) => (
-                    <Label key={idx}>{data}</Label>
+                  {todo.members.map((member) => (
+                    <Label key={member.id}>{member.nickname}</Label>
                   ))}
                 </div>
                 <div className="todo-date">
-                  <Label color="blue">{todo.startDate}</Label>
-                  <Label color="green">{todo.endDate}</Label>
+                  <Label color="blue">{todo.start}</Label>
+                  <Label color="green">{todo.end}</Label>
                 </div>
                 <Dropdown
                   placeholder="Users"

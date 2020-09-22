@@ -26,10 +26,10 @@ class GroupDetailConverter extends Component {
 
     if (user.loginConfirm) {
       if (attendGroups.find((group) => group.id === groupId)) {
-        return <GroupDetail />;
+        return <GroupDetail history={this.props.history} />;
       }
     }
-    return <GroupInfoPage />;
+    return <GroupInfoPage history={this.props.history} />;
   }
 }
 

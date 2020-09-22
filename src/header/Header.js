@@ -14,6 +14,12 @@ import { withRouter, Link } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import axios from "axios";
 
+// 딥딛딥 퍼플스 #000426
+/// #07061C
+// 오묘한 블루 #1C166B
+
+const mage_color = "#07061C";
+
 @withRouter
 @inject("Store")
 @observer
@@ -112,7 +118,7 @@ class Header extends Component {
     return (
       <div
         style={{
-          backgroundColor: " rgb(142, 68, 173)",
+          backgroundColor: mage_color,
           padding: "10px",
           boxSizing: "border-box",
         }}
