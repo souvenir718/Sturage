@@ -50,6 +50,14 @@ class MyPageSideContainer extends Component {
             to="/my/myCalendar"
             content="달력"
           />
+          <Menu.Item
+            name="mail"
+            active={activeItem === "mail"}
+            onClick={this.handleItemClick}
+            as={Link}
+            to="/my/mail"
+            content="내 메일함"
+          />
         </Menu>
       </div>
     );

@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { Feed, Icon, Label } from "semantic-ui-react";
 
-let mailStyle = {
-  backgroundColor: "white",
-  padding: "5px",
-  textOverflow: "ellipsis",
-  lineHeight: "20px",
-};
-
 const mailData = [
   {
     date: "2020-09-08 22:00:01 ",
@@ -85,8 +78,10 @@ class MailContainer extends Component {
     </Feed.Event>
   ));
   render() {
+    let {mailBoxStyle} = this.props;
+
     console.log("???", this.MailBox);
-    return <Feed style={{ mailStyle }}>{this.MailBox}</Feed>;
+    return <Feed  style={{ mailBoxStyle }}>{this.MailBox}</Feed>;
   }
 }
 export default MailContainer;

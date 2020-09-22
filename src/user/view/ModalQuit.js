@@ -7,6 +7,9 @@ import { inject, observer } from "mobx-react";
 class ModalQuit extends Component {
   user = this.props.Store.user;
 
+  quitMember = () => {
+    this.user.setModal(false);
+  };
   render() {
     return (
       <Modal dimmer={this.user.getDimmer} open={this.user.getOpen}>
@@ -18,7 +21,7 @@ class ModalQuit extends Component {
           <Button color="purple" onClick={() => this.user.setModal(false)}>
             취소
           </Button>
-          <Button color="black" onClick={() => this.user.setModal(false)}>
+          <Button color="black" onClick={()=>this.quitMember()}>
             네 탈퇴할래요
           </Button>
         </Modal.Actions>
