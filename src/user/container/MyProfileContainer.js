@@ -23,6 +23,11 @@ class MyProfileContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    // render 다음 실행
+    this.getMyInfo();
+  }
+
   onIdChange = (e) => this.setState({ username: e.target.value });
   onNicknameChange = (e) => this.setState({ nickname: e.target.value });
   onPasswordChange = (e) => this.setState({ password: e.target.value });
@@ -33,8 +38,10 @@ class MyProfileContainer extends Component {
 
   //내정보가져오는
   getMyInfo = () => {
-    const getMyInfoUrl = "/api/users";
+    const getMyInfoUrl = "/api/users/info/";
     axios.get(getMyInfoUrl).then((res) => {
+      console.log(res.data);
+
       this.setState({
         username: res.data.username,
         nickname: res.data.nickname,
@@ -47,23 +54,23 @@ class MyProfileContainer extends Component {
 
   //내정보수정한것 등록
   modifyMyInfo = () => {
+    const api_url = "/api/users/info/";
     const state = this.state;
 
     const data = {
-      username: state.username,
+      // username: state.username,
       nickname: state.nickname,
-      password: state.password,
+      // password: state.password,
       email: state.email,
       phone: state.phone,
       introduce: state.introduce,
     };
-    const api_url = "/api/signin/";
 
     axios
-      .post(api_url, data)
+      .put(api_url, data)
       .then((res) => {
         alert("내 정보 수정에 성공했습니다.");
-        document.location.href = "/";
+        document.location.reload();
       })
       .catch(function (error) {
         if (error.response) {
@@ -91,11 +98,12 @@ class MyProfileContainer extends Component {
           <Form.Field
             id="form-input-control-name"
             control={Input}
-            label="이름"
+            label="ID"
             placeholder="name"
             onChange={this.onIdChange}
-            value={this.state.username}
-          />
+          >
+            {this.state.username}
+          </Form.Field>
           <Form.Field
             id="form-input-control-nick"
             control={Input}
