@@ -63,7 +63,7 @@ class GroupDetailPage extends Component {
     const subjects = detail.getGroupSubjects;
 
     return (
-      <div>
+      <div style={{ height: "100vh" }}>
         {this.state.isFlag && <Sidebar />}
         <Modal
           onClose={this.onClose}
