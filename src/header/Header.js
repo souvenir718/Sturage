@@ -31,6 +31,12 @@ class Header extends Component {
     this.setState({ visible: !this.state.visible });
   };
 
+  mailBoxStyle = {
+    backgroundColor: "white",
+    padding: "5px",
+    textOverflow: "ellipsis",
+    lineHeight: "20px",
+  };
   mail = () => {
     this.setState({
       mail: this.state.mail ? (
@@ -54,7 +60,7 @@ class Header extends Component {
             </Card.Header>
           </Card.Content>
           <CardContent>
-            <MailContainer />
+            <MailContainer mailboxStyle={this.mailBoxStyle} />
           </CardContent>
         </Card>
       ),
