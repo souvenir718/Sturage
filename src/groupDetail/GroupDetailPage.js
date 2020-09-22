@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Header, Item, Button, Modal } from "semantic-ui-react";
 import "./GroupDetailPage.scss";
+import GroupDetailNoSubject from "./view/GroupDetailNoSubject";
 import Todo from "./Todo";
 import Sidebar from "./Sidebar";
 import { inject, observer } from "mobx-react";
@@ -63,7 +64,7 @@ class GroupDetailPage extends Component {
     const subjects = detail.getGroupSubjects;
 
     return (
-      <div style={{ height: "100vh" }}>
+      <div>
         {this.state.isFlag && <Sidebar />}
         <Modal
           onClose={this.onClose}
@@ -101,7 +102,11 @@ class GroupDetailPage extends Component {
           <Grid.Row centered>
             <Grid.Column width={8} className="detailpage-todos">
               <Item.Group>
-                {subjects.length > 0 ? this.createSuject(subjects) : "No Data"}
+                {subjects.length > 0 ? (
+                  this.createSuject(subjects)
+                ) : (
+                  <GroupDetailNoSubject />
+                )}
               </Item.Group>
             </Grid.Column>
           </Grid.Row>

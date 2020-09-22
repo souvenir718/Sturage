@@ -1,10 +1,13 @@
 import { observable, computed, action } from "mobx";
-import subjectData from "../data/subjectData";
+// import subjectData from "../data/subjectData";
 import attends from "../data/attends";
 import moment from "moment";
+import axios from "axios";
 
 export default class GroupLeaderStore {
-  @observable subjectData = subjectData;
+  @observable leaderGroups = [];
+
+  @observable subjectData = [];
   @observable attends = attends;
   @observable members = [];
 
@@ -13,6 +16,11 @@ export default class GroupLeaderStore {
   @observable tmpTitle = "";
   @observable startDate = new Date();
   @observable endDate = new Date();
+
+  @computed
+  get getLeaderGroups() {
+    return this.leaderGroups ? this.leaderGroups.slice("") : [];
+  }
 
   @computed
   get getStartDate() {
@@ -35,6 +43,16 @@ export default class GroupLeaderStore {
   @computed
   get getMembers() {
     return this.members;
+  }
+
+  @action
+  setLeaderGroups() {
+    const url = "/api/leader/groups/";
+    axios.get(url).then((res) => {
+      console.log(res.data[0].subjectList);
+      this.leaderGroups = res.data;
+      this.subjectData = res.data[0].subjectList;
+    });
   }
 
   @action
@@ -64,7 +82,7 @@ export default class GroupLeaderStore {
   @action
   showTodo(id) {
     let subjectList = this.subjectData.map((data) =>
-      data.id === id ? { ...data, isTodo: !data.isTodo } : data
+      data.subject_id === id ? { ...data, isTodo: !data.isTodo } : data
     );
 
     this.subjectData = subjectList;
