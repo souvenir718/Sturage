@@ -40,8 +40,10 @@ class GroupLeaderContainer extends Component {
     const startDate = this.props.Store.leader.getStartDate;
     const endDate = this.props.Store.leader.getEndDate;
     const subjectData = this.props.Store.leader.getSubjectData;
+    const leaderData = this.props.Store.leader.getLeaderData;
     return (
       <GroupLeader
+        leaderData={leaderData}
         startDate={startDate}
         endDate={endDate}
         subjectData={subjectData}

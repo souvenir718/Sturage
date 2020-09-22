@@ -1,9 +1,11 @@
 import { observable, computed, action } from "mobx";
 import subjectData from "../data/subjectData";
 import attends from "../data/attends";
+import leaderData from "../data/leaderData";
 import moment from "moment";
 
 export default class GroupLeaderStore {
+  @observable leaderData = leaderData;
   @observable subjectData = subjectData;
   @observable attends = attends;
   @observable members = [];
@@ -14,6 +16,10 @@ export default class GroupLeaderStore {
   @observable startDate = new Date();
   @observable endDate = new Date();
 
+  @computed
+  get getLeaderData() {
+    return this.leaderData;
+  }
   @computed
   get getStartDate() {
     return this.startDate;
