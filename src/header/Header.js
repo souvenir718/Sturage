@@ -133,8 +133,14 @@ class Header extends Component {
           <Menu.Menu position="left" style={{ display: 0 - 20 }}>
             <Image
               src="../../logo/logo.png"
-              size="tiny"
-              style={{ marin: "5px", marginLeft: "80px" }}
+              size="small"
+              style={{ transform: "rotate(0deg)", margin: "20px 0 15px 80px" }}
+              href="/"
+            />
+            <Image
+              src="../../logo/stur2.png"
+              size="mini"
+              style={{ transform: "rotate(-10deg)" }}
               href="/"
             />
           </Menu.Menu>
