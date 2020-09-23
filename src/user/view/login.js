@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -62,10 +63,28 @@ class Login extends Component {
         style={{ height: "100vh" }}
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 520 }}>
-          <Header as="h2" style={{ color: "#8e44ad" }} textAlign="center">
-            <Image src="./logo/logo_purple.png" /> Log-in to your account
-          </Header>
+        <Grid.Column style={{ maxWidth: 500 }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              itemalign: "center",
+            }}
+          >
+            <Image
+              src="./logo/newlogo.png"
+              style={{ marginBottom: "50px" }}
+              as={Link}
+              to="/"
+            />
+            <Image
+              src="../../logo/stur2black.png"
+              size="mini"
+              style={{ transform: "rotate(-10deg)", marginBottom: "40px" }}
+              href="/"
+            />
+          </div>
+
           <Form size="huge">
             <Segment stacked>
               <Form.Field>
@@ -89,7 +108,7 @@ class Login extends Component {
               </Form.Field>
 
               <Button
-                color="purple"
+                color="black"
                 fluid
                 size="huge"
                 onClick={() => {

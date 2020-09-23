@@ -14,6 +14,13 @@ class SignUp extends Component {
       email: "",
       phone: "",
       introduce: "",
+      userNameError: false,
+      nickNameError: false,
+      emailError: false,
+      passwordError: false,
+      password2Error: false,
+      FormError: false,
+      complete: false,
     };
   }
 
@@ -25,39 +32,92 @@ class SignUp extends Component {
   onPhoneChange = (e) => this.setState({ phone: e.target.value });
   onIntroduceChange = (e) => this.setState({ introduce: e.target.value });
 
+  
+  errorCheck = () => {
+    let error = false;
+
+    if (this.state.username === "") {
+      this.setState({ userNameError: true });
+      error = true;
+    } else {
+      this.setState({ userNameError: false });
+      error = false;
+    }
+    if (this.state.nickName === "") {
+      this.setState({ nickNameError: true });
+      error = true;
+    } else {
+      this.setState({ nickNameError: false });
+      error = false;
+    }
+    if (this.state.email === "") {
+      this.setState({ emailError: true });
+      error = true;
+    } else {
+      this.setState({ emailError: false });
+      error = false;
+    }
+    if (this.state.password === "") {
+      this.setState({ passwordError: true });
+      error = true;
+    } else {
+      this.setState({ passwordError: false });
+      error = false;
+    }
+    if (this.state.password2 === "") {
+      this.setState({ password2Error: true });
+      error = true;
+    } else {
+      this.setState({ password2Error: false });
+      error = false;
+    }
+
+    if (error) {
+      this.setState({ formError: true });
+      return;
+    } else {
+      this.setState({ formError: false });
+    }
+  };
   singup = () => {
     const state = this.state;
-
+    this.errorCheck();
     const api_url = "/api/signin/";
     const data = {
       username: state.username,
       nickname: state.nickname,
       password: state.password,
+      password2: state.password2,
       email: state.email,
       phone: state.phone,
       introduce: state.introduce,
     };
 
-    axios
-      .post(api_url, data)
-      .then((res) => {
-        alert("회원가입에 성공했습니다.");
-        document.location.href = "/";
-      })
-      .catch(function (error) {
-        if (error.response) {
-          const err = {
-            header: error.response.headers,
-            code: error.response.status,
-            mssage: error.response.data,
-          };
-          console.log(err);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-      });
+    if (data.password !== data.password2) {
+      console.log("불일치");
+      alert("비밀번호가 일치하지 않습니다!");
+    } else {
+      axios
+        .post(api_url, data)
+        .then((res) => {
+          alert("회원가입에 성공했습니다.");
+          document.location.href = "/";
+        })
+        .catch(function (error) {
+          if (error.response) {
+            const err = {
+              header: error.response.headers,
+              code: error.response.status,
+              mssage: error.response.data,
+            };
+            console.log(err);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("Error", error.message);
+          }
+        });
+    }
   };
 
   render() {
@@ -72,36 +132,43 @@ class SignUp extends Component {
           <Icon name="pen square" />
           회원가입하기
         </h2>
-        <Form style={{ margin: "40px 200px" }}>
+        <Form error={this.state.formError} style={{ margin: "40px 200px" }}>
           <Form.Field>
             <label>ID</label>
             <input
+              required={true}
               id="form-input-control-name"
               placeholder="Name"
+              error={this.state.usernameError}
               onChange={this.onIdChange}
             />
           </Form.Field>
           <Form.Field>
             <label>비밀번호</label>
             <input
+              required={true}
               id="form-input-control-passoword"
               placeholder="Passoword"
               type="password"
+              error={this.state.passwordError}
               onChange={this.onPasswordChange}
             />
           </Form.Field>
           <Form.Field>
             <label>비밀번호 확인</label>
             <input
+              required={true}
               id="form-input-control-passoword2"
               placeholder="Passoword"
               type="password"
+              error={this.state.password2Error}
               onChange={this.onPassword2Change}
             />
           </Form.Field>
           <Form.Field>
-            <label>이름</label>
+            <label>닉네임</label>
             <input
+              required={true}
               id="form-input-control-nickname"
               placeholder="Nickname"
               onChange={this.onNicknameChange}
@@ -110,8 +177,10 @@ class SignUp extends Component {
           <Form.Field>
             <label>Email</label>
             <input
+              required={true}
               id="form-input-control-email"
               placeholder="Email"
+              error={this.state.emailError}
               onChange={this.onEmailChange}
             />
           </Form.Field>
@@ -120,6 +189,7 @@ class SignUp extends Component {
             <input
               id="form-input-control-phone"
               placeholder="010-1234-1234"
+              error={this.state.phoneError}
               onChange={this.onPhoneChange}
             />
           </Form.Field>
@@ -128,6 +198,7 @@ class SignUp extends Component {
             <textarea
               id="form-input-control-introduce"
               placeholder="Introduce"
+              error={this.state.introduceError}
               onChange={this.onIntroduceChange}
             />
           </Form.Field>
