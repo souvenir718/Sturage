@@ -9,6 +9,7 @@ export default class GroupLeaderStore {
   @observable leaderGroups = [];
   @observable leaderData = leaderData;
   @observable subjectData = [];
+  @observable groupMembers = [];
 
   @observable attends = attends;
   @observable members = [];
@@ -18,6 +19,16 @@ export default class GroupLeaderStore {
   @observable tmpTitle = "";
   @observable startDate = new Date();
   @observable endDate = new Date();
+
+  @computed
+  get getGroupMembers() {
+    return this.groupMembers;
+  }
+
+  @computed
+  get getLeaderGroups() {
+    return this.leaderGroups;
+  }
 
   @computed
   get getLeaderData() {
@@ -56,7 +67,17 @@ export default class GroupLeaderStore {
       console.log(res.data[0].subjectList);
       this.leaderGroups = res.data;
       this.subjectData = res.data[0].subjectList;
+      this.groupMembers = res.data[0].members;
     });
+  }
+
+  @action
+  setSubjectbyGroupTitle(title) {
+    const group = this.leaderGroups.find(
+      (leaderGroup) => leaderGroup.title === title
+    );
+    this.subjectData = group.subjectList;
+    this.groupMembers = group.members;
   }
 
   @action
@@ -115,20 +136,24 @@ export default class GroupLeaderStore {
   }
 
   @action
-  addUser(dataId, todoId) {
-    let subject = this.subjectData.find((data) => data.id === dataId);
-
-    let todoList = subject.todoList;
-    let newTodoList = todoList.map((todo) =>
-      todo.id === todoId ? { ...todo, userList: this.userList } : todo
+  addUser(subjectId, todoId) {
+    let subject = this.subjectData.find(
+      (data) => data.subject_id === subjectId
     );
+    console.log(subject);
 
-    let subjectList = this.subjectData.map((data) =>
-      data.id === dataId ? { ...data, todoList: newTodoList } : data
-    );
+    // console.log(this.subjectData);
+    // let todoList = subject.todoGroups;
+    // let newTodoList = todoList.map((todo) =>
+    //   todo.id === todoId ? { ...todo, members: this.userList } : todo
+    // );
 
-    this.subjectData = subjectList;
-    this.userList = [];
+    // let subjectList = this.subjectData.map((data) =>
+    //   data.id === dataId ? { ...data, todoGroups: newTodoList } : data
+    // );
+
+    // this.subjectData = subjectList;
+    // this.userList = [];
   }
 
   @action

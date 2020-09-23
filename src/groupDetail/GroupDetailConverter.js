@@ -24,6 +24,9 @@ class GroupDetailConverter extends Component {
     const attendGroups = user.getAttendGroups;
     const groupId = detail.groupInfo.id;
 
+    console.log(user.loginConfirm);
+    console.log(groupId);
+    console.log(attendGroups);
     if (user.loginConfirm) {
       if (attendGroups.find((group) => group.id === groupId)) {
         return <GroupDetail history={this.props.history} />;

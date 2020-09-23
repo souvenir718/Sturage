@@ -11,37 +11,9 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { inject, observer } from "mobx-react";
-
+import moment from "moment";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-const users = [
-  { key: "subin", text: "Subin", value: "subin" },
-  { key: "subin1", text: "Subin1", value: "subin1" },
-  { key: "subin2", text: "Subin2", value: "subin2" },
-  { key: "subin3", text: "Subin3", value: "subin3" },
-  { key: "subin4", text: "Subin4", value: "subin4" },
-  { key: "subin5", text: "Subin5", value: "subin5" },
-  { key: "subin6", text: "Subin6", value: "subin6" },
-];
-
-const groups = [
-  {
-    key: "A Group",
-    text: "A Group",
-    value: "A Group",
-  },
-  {
-    key: "B Group",
-    text: "B Group",
-    value: "B Group",
-  },
-  {
-    key: "C Group",
-    text: "C Group",
-    value: "C Group",
-  },
-];
 
 const CustomInput = ({ value, onClick }) => (
   <Button className="custom-input" onClick={onClick}>
@@ -61,30 +33,12 @@ class GroupLeader extends Component {
     this.numOfSubject = this.props.subjectData.length;
   }
 
-  componentDidMount() {
-    const { leader } = this.props.Store;
-    leader.setLeaderGroups();
-  }
-
-  selectUserList = (members) => {
-    return members.map((member) => {
+  selectUserList = () => {
+    return this.props.groupMembers.map((member) => {
       const { id, nickname } = { ...member };
       return { key: id, text: nickname, value: id };
     });
   };
-
-  startDateChange = (date) => {
-    this.setState({
-      startDate: date,
-    });
-  };
-
-  endDateChange = (date) => {
-    this.setState({
-      endDate: date,
-    });
-  };
-
   getList = () => {
     const subjectList = this.props.subjectData.map((data) => (
       <div key={data.subject_id}>
@@ -154,17 +108,19 @@ class GroupLeader extends Component {
                   ))}
                 </div>
                 <div className="todo-date">
-                  <Label color="blue">{todo.start}</Label>
-                  <Label color="green">{todo.end}</Label>
+                  <Label color="blue">
+                    {moment(todo.start).format("YYYY-MM-DD")}
+                  </Label>
+                  <Label color="green">
+                    {moment(todo.end).format("YYYY-MM-DD")}
+                  </Label>
                 </div>
                 <Dropdown
                   placeholder="Users"
                   fluid
                   multiple
                   selection
-                  options={this.selectUserList(
-                    todo.members ? todo.members.slice("") : []
-                  )}
+                  options={this.selectUserList()}
                   onChange={this.props.changeUser}
                   className="users-dropdown"
                 />
@@ -194,26 +150,23 @@ class GroupLeader extends Component {
   };
 
   getOptions = () => {
-    const { leaderData } = this.props;
+    const { leaderGroups } = this.props;
     let option = {
       key: "",
       value: "",
       text: "",
     };
-    let options = leaderData.map(
+    let options = leaderGroups.map(
       (data) =>
         (option = {
           key: data.id,
-          value: data.name,
-          text: data.name,
+          value: data.title,
+          text: data.title,
         })
     );
     return options;
   };
 
-  changeOptions = (event, data) => {
-    console.log(data.value);
-  };
   render() {
     const subjectList = this.getList();
     const option = this.getOptions();
@@ -228,7 +181,7 @@ class GroupLeader extends Component {
                     inline
                     options={option}
                     defaultValue={option[0].value}
-                    onChange={this.changeOptions}
+                    onChange={this.props.setSubjectbyGroupTitle}
                   />
                 </span>
               </Header>

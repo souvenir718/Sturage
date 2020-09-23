@@ -5,6 +5,13 @@ import { inject, observer } from "mobx-react";
 @inject("Store")
 @observer
 class GroupLeaderContainer extends Component {
+  componentDidMount() {
+    const { leader } = this.props.Store;
+    leader.setLeaderGroups();
+  }
+  setSubjectbyGroupTitle = (event, data) => {
+    this.props.Store.leader.setSubjectbyGroupTitle(data.value);
+  };
   deleteSubject = (id) => {
     this.props.Store.leader.deleteSubject(id);
   };
@@ -17,8 +24,8 @@ class GroupLeaderContainer extends Component {
   addTodo = (id) => {
     this.props.Store.leader.addTodo(id);
   };
-  addUser = (dataId, userId) => {
-    this.props.Store.leader.addUser(dataId, userId);
+  addUser = (subjectId, todoId) => {
+    this.props.Store.leader.addUser(subjectId, todoId);
   };
   changeUser = (event, data) => {
     this.props.Store.leader.changeUser(event, data);
@@ -41,23 +48,33 @@ class GroupLeaderContainer extends Component {
     const endDate = this.props.Store.leader.getEndDate;
     const subjectData = this.props.Store.leader.getSubjectData;
     const leaderData = this.props.Store.leader.getLeaderData;
+    const leaderGroups = this.props.Store.leader.getLeaderGroups;
+    const groupMembers = this.props.Store.leader.getGroupMembers;
+    const lengthG = leaderGroups.length;
     return (
-      <GroupLeader
-        leaderData={leaderData}
-        startDate={startDate}
-        endDate={endDate}
-        subjectData={subjectData}
-        deleteSubject={this.deleteSubject}
-        addSubject={this.addSubject}
-        showTodo={this.showTodo}
-        addTodo={this.addTodo}
-        addUser={this.addUser}
-        changeUser={this.changeUser}
-        changeTodo={this.changeTodo}
-        changeTitle={this.changeTitle}
-        changeStartDate={this.changeStartDate}
-        changeEndDate={this.changeEndDate}
-      />
+      <>
+        {lengthG > 0 && (
+          <GroupLeader
+            groupMembers={groupMembers}
+            leaderGroups={leaderGroups}
+            leaderData={leaderData}
+            startDate={startDate}
+            endDate={endDate}
+            subjectData={subjectData}
+            deleteSubject={this.deleteSubject}
+            addSubject={this.addSubject}
+            showTodo={this.showTodo}
+            addTodo={this.addTodo}
+            addUser={this.addUser}
+            changeUser={this.changeUser}
+            changeTodo={this.changeTodo}
+            changeTitle={this.changeTitle}
+            changeStartDate={this.changeStartDate}
+            changeEndDate={this.changeEndDate}
+            setSubjectbyGroupTitle={this.setSubjectbyGroupTitle}
+          />
+        )}
+      </>
     );
   }
 }
