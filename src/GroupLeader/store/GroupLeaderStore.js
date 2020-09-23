@@ -1,14 +1,14 @@
 import { observable, computed, action } from "mobx";
-import subjectData from "../data/subjectData";
+// import subjectData from "../data/subjectData";
 import attends from "../data/attends";
 import leaderData from "../data/leaderData";
 import moment from "moment";
 import axios from "axios";
 
 export default class GroupLeaderStore {
-
+  @observable leaderGroups = [];
   @observable leaderData = leaderData;
-  @observable subjectData = subjectData;
+  @observable subjectData = [];
 
   @observable attends = attends;
   @observable members = [];
@@ -51,6 +51,8 @@ export default class GroupLeaderStore {
   setLeaderGroups() {
     const url = "/api/leader/groups/";
     axios.get(url).then((res) => {
+      console.log("setLeaderGroups");
+      console.log(res.data);
       console.log(res.data[0].subjectList);
       this.leaderGroups = res.data;
       this.subjectData = res.data[0].subjectList;
