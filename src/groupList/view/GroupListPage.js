@@ -4,15 +4,47 @@ import { Input, Grid, Button, Icon, Card, Header } from "semantic-ui-react";
 import SubjectCard from "./SubjectCard";
 import ListCard from "./ListCard";
 class GroupListPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchedGroups: this.props.groupData,
+      keyword: "",
+    };
+  }
+
+  keywordSearch = () => {
+    // List 페이지 검색기능 추가
+    // group의 title을 공백제거, keywork랑 둘다 대문자로 변경해서 일치하는지 확인
+    const { groupData } = this.props;
+    const { keyword } = this.state;
+
+    this.setState({
+      searchedGroups: groupData.filter((group) => {
+        return (
+          group.title
+            .replace(/(?:\r\n|\r|\n)/g, "<br/>")
+            .toUpperCase()
+            .lastIndexOf(keyword.toUpperCase()) >= 0
+        );
+      }),
+    });
+  };
+
+  enterSearch = (e) => {
+    if (e.key === "Enter") this.keywordSearch();
+  };
+
+  onChangeKeyword = (e) => {
+    this.setState({ keyword: e.target.value });
+  };
   getCategoryList = () => {
-    let dataList = this.props.categoryData;
-    let categoryList = dataList.map((data) => (
+    return this.props.categoryData.map((data) => (
       <SubjectCard key={data.id} tag={data.tag} icon={data.icon} />
     ));
-    return categoryList;
   };
+
   getGroupList = () => {
-    let dataList = this.props.groupData;
+    let dataList = this.state.searchedGroups;
     let groupList = dataList.map((data) => (
       <ListCard
         key={data.id}
@@ -35,8 +67,14 @@ class GroupListPage extends Component {
       <Grid className="listpage-contianer">
         <Grid.Row centered className="listpage-search">
           <Grid.Column width={8}>
-            <Input size={"massive"} fluid placeholder="Search..." />
-            <Button icon>
+            <Input
+              size={"massive"}
+              fluid
+              placeholder="Search..."
+              onChange={this.onChangeKeyword}
+              onKeyPress={this.enterSearch}
+            />
+            <Button icon onClick={this.keywordSearch}>
               <Icon name="search" />
               &nbsp; &nbsp;검색
             </Button>
