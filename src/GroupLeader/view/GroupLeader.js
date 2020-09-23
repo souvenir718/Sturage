@@ -62,21 +62,29 @@ class GroupLeader extends Component {
   }
 
   componentDidMount() {
-    console.log("test");
     const { leader } = this.props.Store;
     leader.setLeaderGroups();
   }
+
+  selectUserList = (members) => {
+    return members.map((member) => {
+      const { id, nickname } = { ...member };
+      return { key: id, text: nickname, value: id };
+    });
+  };
 
   startDateChange = (date) => {
     this.setState({
       startDate: date,
     });
   };
+
   endDateChange = (date) => {
     this.setState({
       endDate: date,
     });
   };
+
   getList = () => {
     const subjectList = this.props.subjectData.map((data) => (
       <div key={data.subject_id}>
@@ -154,7 +162,9 @@ class GroupLeader extends Component {
                   fluid
                   multiple
                   selection
-                  options={users}
+                  options={this.selectUserList(
+                    todo.members ? todo.members.slice("") : []
+                  )}
                   onChange={this.props.changeUser}
                   className="users-dropdown"
                 />
