@@ -59,9 +59,8 @@ class GroupDetailPage extends Component {
   // };
 
   render() {
-    const { detail } = this.props.Store;
-    const group = detail.getGroupInfo;
-    const subjects = detail.getGroupSubjects;
+    console.log("DetailPage");
+    const { group, subjects } = this.props;
 
     return (
       <div>

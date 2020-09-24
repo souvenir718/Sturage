@@ -20,7 +20,8 @@ class GroupInfoPage extends Component {
   };
 
   render() {
-    const group = this.props.Store.detail.getGroupInfo;
+    console.log("InfoPage");
+    const { group } = this.props;
     const leader = { ...group.leader };
 
     return (
