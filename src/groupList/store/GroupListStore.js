@@ -5,6 +5,10 @@ export default class GroupListStore {
   @observable categoryData = categoryData;
   @observable groupData = [];
 
+  constructor(root) {
+    this.root = root;
+  }
+
   @computed
   get getCategoryData() {
     return categoryData;
@@ -18,5 +22,9 @@ export default class GroupListStore {
   @action
   setGroupData(groupDataApi) {
     this.groupData = groupDataApi;
+
+    //초기화
+    this.root.detail.groupInfo = {};
+    this.root.detail.groupSubjects = [];
   }
 }

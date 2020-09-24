@@ -12,6 +12,8 @@ import GroupListContainer from "./groupList/container/GroupListContainer";
 // import GroupLeader from "./groupLeader/view/GroupLeader";
 import GroupLeaderContainer from "./GroupLeader/container/GroupLeaderContainer";
 import GroupUserContainer from "./GroupLeader/container/GroupUserContainer";
+import RouteLoginIf from "./routePermisions/RouteLoginIf";
+
 function App() {
   return (
     <>
@@ -26,7 +28,8 @@ function App() {
             component={GroupDetailConverter}
             exact={true}
           />
-          <Route path="/addGroup" component={AddGroup} exact={true} />
+          <RouteLoginIf path="/addGroup" exact component={AddGroup} />
+          {/* <Route path="/addGroup" component={AddGroup} exact={true} /> */}
           <Route path="/my/:menu" component={myContainer} exact={true} />
           <Route path="/leader" component={GroupLeaderContainer} exact={true} />
           <Route

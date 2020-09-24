@@ -16,11 +16,14 @@ export default class GroupStore {
 
   @computed
   get getGroupSubjects() {
-    return this.groupSubjects
-      ? this.groupSubjects.slice("").map((subject) => {
-          return { ...subject };
-        })
-      : [];
+    if (this.groupInfo.subjectList !== undefined) {
+      return this.groupInfo.subjectList.slice("").length > 0
+        ? this.groupInfo.subjectList.slice("").map((subject) => {
+            return { ...subject };
+          })
+        : [];
+    }
+    return [];
   }
 
   @action
@@ -30,13 +33,6 @@ export default class GroupStore {
 
   @action
   setGroupInfo(groupObj) {
-    this.groupSubjects = groupObj.subjectList;
-    this.groupMembers = groupObj.members;
-    this.groupAttends = groupObj.attends;
-
-    delete groupObj.subjectList;
-    delete groupObj.members;
-    delete groupObj.attends;
     this.groupInfo = groupObj;
   }
 }
